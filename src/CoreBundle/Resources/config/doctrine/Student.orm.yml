@@ -1,0 +1,29 @@
+CoreBundle\Entity\Student:
+    type: entity
+    table: null
+    repositoryClass: CoreBundle\Repository\StudentRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        firstName:
+            type: string
+            length: 255
+            column: first_name
+    oneToOne:
+        singleRating:
+            targetEntity: SingleRating
+            mappedBy: student
+    manyToOne:
+        projectGroup:
+            targetEntity: ProjectGroup
+            inversedBy: students
+            joinColumn:
+                name: group_id
+                referencedColumnName: id
