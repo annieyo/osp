@@ -1,0 +1,22 @@
+CoreBundle\Entity\GroupRating:
+    type: entity
+    table: null
+    repositoryClass: CoreBundle\Repository\GroupRatingRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        product:
+            type: integer
+        documentation:
+            type: integer
+    oneToOne:
+        projectGroup:
+            targetEntity: ProjectGroup
+            inversedBy: groupRating
+            joinColumn:
+                name: group_id
+                referencedColumnName: id

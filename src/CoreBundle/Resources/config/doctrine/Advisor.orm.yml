@@ -1,0 +1,14 @@
+CoreBundle\Entity\Advisor:
+    type: entity
+    table: null
+    repositoryClass: CoreBundle\Repository\AdvisorRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    oneToMany:
+        projectGroup:
+            targetEntity: ProjectGroup
+            mappedBy: advisor

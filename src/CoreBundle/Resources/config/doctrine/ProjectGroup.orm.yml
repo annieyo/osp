@@ -1,0 +1,41 @@
+CoreBundle\Entity\ProjectGroup:
+    type: entity
+    table: null
+    repositoryClass: CoreBundle\Repository\ProjectGroupRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+    oneToOne:
+        groupRating:
+            targetEntity: GroupRating
+            mappedBy: projectGroup
+    oneToMany:
+        students:
+            targetEntity: Student
+            mappedBy: projectGroup
+    manyToOne:
+        projectClass:
+            targetEntity: ProjectClass
+            inversedBy: projectGroup
+            joinColumn:
+                name: class_id
+                referencedColumnName: id
+        advisor:
+            targetEntity: Advisor
+            inversedBy: projectGroup
+            joinColumn:
+                name: advisor_id
+                referencedColumnName: id
+        topic:
+            targetEntity: Topic
+            inversedBy: projectGroup
+            joinColumn:
+                name: topic_id
+                referencedColumnName: id

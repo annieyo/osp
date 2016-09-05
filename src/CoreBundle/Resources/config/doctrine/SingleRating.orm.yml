@@ -1,0 +1,28 @@
+CoreBundle\Entity\SingleRating:
+    type: entity
+    table: null
+    repositoryClass: CoreBundle\Repository\SingleRatingRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        discussion:
+            type: integer
+        presentation:
+            type: integer
+        totalIhk:
+            type: integer
+            column: total_ihk
+        totalGso:
+            type: integer
+            column: total_gso
+    oneToOne:
+        student:
+            targetEntity: Student
+            inversedBy: singleRating
+            joinColumn:
+                name: student_id
+                referencedColumnName: id
