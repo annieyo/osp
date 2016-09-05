@@ -11,28 +11,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class DefaultController extends Controller
 {
-    /**
-     * @Route("/", name="homepage")
-     */
-    public function indexAction(Request $request)
-    {
-//        $user = $this->getUser();
-//        if (!($user instanceof UserInterface)) {
-//            return $this->redirectToRoute('login');
-//        } else {
-
-//            $user = $this->get('security.token_storage')->getToken()->getUser();
-//
-//            var_dump($user);
-//            exit;
-
-            return $this->render('default/index.html.twig', [
-                'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
-            ]);
-//        }
-    }
-
-
 
     /**
      * @Route("/login", name="login")
@@ -41,14 +19,14 @@ class DefaultController extends Controller
     {
         $user = $this->getUser();
         if ($user instanceof UserInterface) {
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('core_homepage');
         }
 
         /** @var AuthenticationException $exception */
         $exception = $this->get('security.authentication_utils')
             ->getLastAuthenticationError();
 
-        return $this->render('default/login.html.twig', [
+        return $this->render('CoreBundle:Default:login.html.twig', [
             'error' => $exception ? $exception->getMessage() : NULL,
         ]);
     }
@@ -58,6 +36,5 @@ class DefaultController extends Controller
      */
     public function logoutAction(Request $request)
     {
-        // Nothing needed.
     }
 }
