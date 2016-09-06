@@ -2,13 +2,15 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}GSO - OSP{% endblock %}</title>
+
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="/bundles/core/vendor/materialize/css/materialize.min.css" />
+        <link rel="icon" href="/bundles/core/fav.ico" type="image/x-icon" />
+
         {% block stylesheets %}
-            {% stylesheets 'bundles/core/css/*' filter='cssrewrite' %}
-            <link rel="stylesheet" href="{{ asset_url }}" />
-            {% endstylesheets %}
         {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body class="{% block bodyClass %}{% endblock %}">
@@ -22,10 +24,11 @@
     {% endfor %}
 
         {% block body %}{% endblock %}
+
+        <script src="/bundles/core/vendor/jquery/jquery.js"></script>
+        <script src="/bundles/core/vendor/materialize/js/materialize.min.js"></script>
+
         {% block javascripts %}
-            {% javascripts '@CoreBundle/Resources/public/js/*' %}
-                <script src="{{ asset_url }}"></script>
-            {% endjavascripts %}
         {% endblock %}
     </body>
 </html>

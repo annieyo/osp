@@ -1,21 +1,36 @@
 {% extends 'CoreBundle::layout.html.twig' %}
 
+{% form_theme form _self %}
+
+{% block form_row %}
+    {% spaceless %}
+        <div class="AAAAAAAAAAAAAAAAAA">
+            {{ form_label(form, 'test label name', { 'attr': {'class': 'control-label'} }) }}
+            <div class="controls">
+                {{ form_widget(form) }}
+                {{ form_errors(form) }}
+            </div>
+        </div>
+    {% endspaceless %}
+{% endblock form_row %}
+
+
+
 {% block content %}
+    <div class="main card-panel">
+        {{ form_start(form) }}
+        {#{{ form_widget(form) }}#}
 
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
+        {#<div id="existing">#}
+            {#{{ form_widget(groupSelectForm) }}#}
+        {#</div>#}
 
-    <div id="existing">
-        {{ form_widget(groupSelectForm) }}
+        {#<div id="notexisting">#}
+            {{ form_widget(groupForm) }}
+    {#</div>#}
+
+        <input type="submit" value="Speichern" class="btn btn-default pull-right" />
+
+        {{ form_end(form) }}
     </div>
-
-    <div id="notexisting">
-        {{ form_widget(groupForm) }}
-    </div>
-
-
-    <input type="submit" value="Speichern"
-           class="btn btn-default pull-right" />
-    {{ form_end(form) }}
-
 {% endblock %}
