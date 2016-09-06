@@ -28,7 +28,8 @@
 /vendor/
 
 # Assets and user uploads
-/web/bundles/
+!/web/bundles/core/*
+!/web/fav.ico
 /web/uploads/
 
 # Assets managed by Bower

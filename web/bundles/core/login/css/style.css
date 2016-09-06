@@ -1,0 +1,41 @@
+html,
+body {
+    /*height: 100%;*/
+}
+html {
+    display: table;
+    margin: auto;
+}
+body {
+    /*display: table-cell;*/
+    vertical-align: middle;
+}
+#login-page {
+    width: 340px;
+    margin-top: 110px;
+    margin-bottom: 0;
+}
+.input-field .prefix {
+    padding-top: 8px;
+}
+.margin {
+    margin: 0 !important;
+}
+
+input:focus {
+    background-position: 0 0;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+.blue {
+    background-color: #428ecc !important;
+}
+
+.login-logo {
+    margin-top: 10px;
+    width: 270px;
+    margin-bottom: -10px;
+}
