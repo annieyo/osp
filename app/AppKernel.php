@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new CoreBundle\CoreBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+            new Evheniy\MaterializeBundle\MaterializeBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

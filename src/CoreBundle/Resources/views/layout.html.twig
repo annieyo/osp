@@ -3,20 +3,27 @@
 {% block title %}OSP - Noten{% endblock %}
 {% block stylesheets %}
 
-    <link rel="stylesheet" href="/bundles/core/admin/css/style.css" />
+    {#<link rel="stylesheet" href="/bundles/core/admin/css/style.css" />#}
+    {% stylesheets '@CoreBundle/Resources/public/admin/css/*' filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
 
 {% endblock %}
 
 {% block bodyClass %}blue-grey lighten-5{% endblock %}
 
 {% block body %}
-    <nav class=" indigo darken-4">
+    <nav class="blue">
         <div class="nav-wrapper">
-            <a href="#" class="gso-logo"><img src="/bundles/core/images/logo_white.png"></a>
+
+            {% image '@CoreBundle/Resources/public/images/logo_white.png'  output="images/logo_white.png" %}
+            <a href="#" class="gso-logo"><img src="{{ asset_url }}"></a>
+            {% endimage %}
+
             <ul id="nav-mobile" class="right">
-                <li><a href="">Übersicht</a></li>
-                <li><a href="">Einstellungen</a></li>
-                <a href="/logout" class="waves-effect waves-light btn  grey lighten-1"><i class="material-icons left">input</i>Logout</a>
+                <li {% if app.request.get('_route') == 'grade_new' %} class="active"{% endif %}><a href="">Hinzufügen</a></li>
+                <li><a href="">Suchen</a></li>
+                <a href="/logout" class="waves-effect waves-light btn  orange accent-3"><i class="material-icons left">input</i>Logout</a>
             </ul>
         </div>
     </nav>
@@ -25,5 +32,8 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="/bundles/core/admin/js/scripts.js"></script>
+    {#<script src="/bundles/core/admin/js/scripts.js"></script>#}
+    {% javascripts '@CoreBundle/Resources/public/admin/js/*' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}

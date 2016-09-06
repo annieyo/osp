@@ -3,7 +3,10 @@
 {% block title %}Login{% endblock %}
 {% block stylesheets %}
 
-    <link rel="stylesheet" href="bundles/core/login/css/style.css" />
+    {#<link rel="stylesheet" href="bundles/core/login/css/style.css" />#}
+    {% stylesheets '@CoreBundle/Resources/public/login/css/*' filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
 
 {% endblock %}
 
@@ -17,6 +20,10 @@
 
 {% block javascripts %}
 
-    <script src="bundles/core/login/js/scripts.js"></script>
+    {% javascripts '@CoreBundle/Resources/public/login/js/*' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {#<script src="bundles/core/login/js/scripts.js"></script>#}
 
 {% endblock %}

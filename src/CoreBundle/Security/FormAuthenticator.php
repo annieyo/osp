@@ -75,7 +75,7 @@ class FormAuthenticator extends AbstractGuardAuthenticator
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
-        $url = $this->router->generate('core_homepage');
+        $url = $this->router->generate('grade_new');
         return new RedirectResponse($url);
     }
     /**

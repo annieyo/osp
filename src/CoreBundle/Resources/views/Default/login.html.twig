@@ -7,14 +7,18 @@
             <form class="login-form" name="login" action="{{ path('login') }}" method="POST">
                 <div class="row">
                     <div class="input-field col s12 center">
-                        <img class="login-logo" src="bundles/core/images/app_logo.png" alt="" class="responsive-img valign profile-image-login">
+
+                        {% image '@CoreBundle/Resources/public/images/app_logo.png'  output="images/app_logo.png" %}
+                        <img src="{{ asset_url }}" class="responsive-img valign profile-image-login">
+                        {% endimage %}
+
                         <p class="center login-form-text"></p>
                     </div>
                 </div>
                 <div class="row margin">
                     <div class="input-field col s12">
                         <i class="material-icons prefix">perm_identity</i>
-                        <input name="username"  class="validate" id="text" type="text">
+                        <input name="username" id="text" type="text">
                         <label for="text"  >Benutzer</label>
 
                     </div>
@@ -22,7 +26,7 @@
                 <div class="row margin">
                     <div class="input-field col s12">
                         <i class="material-icons prefix">lock_outline</i>
-                        <input name="password" id="password" type="password" value=" ">
+                        <input name="password" id="password" type="password" value="">
                         <label for="password">Password</label>
                     </div>
                 </div>

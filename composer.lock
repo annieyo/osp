@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "51833a72dd6437d3d339113b98eaead3",
-    "content-hash": "7e734cd6010e3f84cc364d4da84f46c6",
+    "hash": "01ebbfa52bc447687320f207715085a1",
+    "content-hash": "601b45b69c95b5b5a26b24ae38ec672a",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -908,6 +908,102 @@
                 "orm"
             ],
             "time": "2016-01-05 21:34:58"
+        },
+        {
+            "name": "evheniy/jquery-bundle",
+            "version": "1.5.1",
+            "target-dir": "Evheniy/JqueryBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/evheniy/JqueryBundle.git",
+                "reference": "a0a75f3b9345f4682b5226e9c52c4294403c9402"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/evheniy/JqueryBundle/zipball/a0a75f3b9345f4682b5226e9c52c4294403c9402",
+                "reference": "a0a75f3b9345f4682b5226e9c52c4294403c9402",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9",
+                "symfony/assetic-bundle": "~2.5-dev",
+                "symfony/symfony": ">=3.0"
+            },
+            "require-dev": {
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Evheniy\\JqueryBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "evheniy",
+                    "homepage": "https://github.com/evheniy"
+                }
+            ],
+            "description": "The JqueryBundle adds the ability to add latest jQuery to your application.",
+            "keywords": [
+                "jquery",
+                "latest",
+                "symfony"
+            ],
+            "time": "2016-06-06 11:24:39"
+        },
+        {
+            "name": "evheniy/materialize-bundle",
+            "version": "1.2.0",
+            "target-dir": "Evheniy/MaterializeBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/evheniy/MaterializeBundle.git",
+                "reference": "d48177554d34d4ccbfb11cdd7fd334f7aae34647"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/evheniy/MaterializeBundle/zipball/d48177554d34d4ccbfb11cdd7fd334f7aae34647",
+                "reference": "d48177554d34d4ccbfb11cdd7fd334f7aae34647",
+                "shasum": ""
+            },
+            "require": {
+                "evheniy/jquery-bundle": ">=1.0",
+                "php": ">=5.5.9",
+                "symfony/symfony": ">=3.0"
+            },
+            "require-dev": {
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Evheniy\\MaterializeBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "evheniy",
+                    "homepage": "https://github.com/evheniy"
+                }
+            ],
+            "description": "The MaterializeBundle adds the ability to add latest Materialize to your application.",
+            "keywords": [
+                "Symfony2",
+                "adaptive",
+                "google",
+                "latest",
+                "materialize"
+            ],
+            "time": "2016-06-06 11:26:21"
         },
         {
             "name": "incenteev/composer-parameter-handler",

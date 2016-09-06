@@ -22,9 +22,11 @@ class GroupSelectType extends AbstractType
                     'multiple' => false,
                     'expanded' => false,
                     'mapped' => false,
+                    'placeholder' => "Bitte wählen",
                     'label' => 'Gruppe wählen',
                 )
             );
+
     }
 
     public function configureOptions(OptionsResolver $resolver)

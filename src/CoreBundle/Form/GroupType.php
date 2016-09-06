@@ -12,6 +12,7 @@ class GroupType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
         $builder
             ->add(
                 'name',
@@ -25,6 +26,7 @@ class GroupType extends AbstractType
                 EntityType::class,
                 array(
                     'class' => 'CoreBundle:Topic',
+                    'placeholder' => 'Bitte wählen',
                     'choice_label' => 'name',
                     'multiple' => false,
                     'expanded' => false,
@@ -36,6 +38,7 @@ class GroupType extends AbstractType
                 EntityType::class,
                 array(
                     'class' => 'CoreBundle:ProjectClass',
+                    'placeholder' => 'Bitte wählen',
                     'choice_label' => 'name',
                     'multiple' => false,
                     'expanded' => false,
@@ -48,6 +51,7 @@ class GroupType extends AbstractType
                 array(
                     'class' => 'CoreBundle:Advisor',
                     'choice_label' => 'name',
+                    'placeholder' => 'Bitte wählen',
                     'multiple' => false,
                     'expanded' => false,
                     'label' => 'Berater',

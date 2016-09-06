@@ -1,35 +1,34 @@
 {% extends 'CoreBundle::layout.html.twig' %}
 
-{% form_theme form _self %}
-
-{% block form_row %}
-    {% spaceless %}
-        <div class="AAAAAAAAAAAAAAAAAA">
-            {{ form_label(form, 'test label name', { 'attr': {'class': 'control-label'} }) }}
-            <div class="controls">
-                {{ form_widget(form) }}
-                {{ form_errors(form) }}
-            </div>
-        </div>
-    {% endspaceless %}
-{% endblock form_row %}
-
-
+{% form_theme form with ['CoreBundle:Form:form-div-layout-override.html.twig'] %}
+{% form_theme groupForm with ['CoreBundle:Form:form-div-layout-override.html.twig'] %}
+{% form_theme groupSelectForm with ['CoreBundle:Form:form-div-layout-override.html.twig'] %}
 
 {% block content %}
+
     <div class="main card-panel">
+
+        <h2 class="header">Schüler hinzufügen</h2>
+
+
         {{ form_start(form) }}
-        {#{{ form_widget(form) }}#}
+        {{ form_widget(form) }}
 
-        {#<div id="existing">#}
-            {#{{ form_widget(groupSelectForm) }}#}
-        {#</div>#}
+        <div id="existing">
+            {{ form_widget(groupSelectForm) }}
+        </div>
 
-        {#<div id="notexisting">#}
+        <div id="notexisting">
             {{ form_widget(groupForm) }}
-    {#</div>#}
+        </div>
 
-        <input type="submit" value="Speichern" class="btn btn-default pull-right" />
+        <div class="row">
+            <div class="input-field col s6">
+                {#<input type="submit" value="Speichern" class="btn btn-default pull-right blue" />#}
+                <a  type="submit" value="Speichern"  class="waves-effect waves-light btn blue"><i class="material-icons left">done</i>Speichern</a>
+            </div>
+        </div>
+
 
         {{ form_end(form) }}
     </div>
