@@ -1,0 +1,21 @@
+{% extends 'CoreBundle::layout.html.twig' %}
+
+{% block content %}
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+
+    <div id="existing">
+        {{ form_widget(groupSelectForm) }}
+    </div>
+
+    <div id="notexisting">
+        {{ form_widget(groupForm) }}
+    </div>
+
+
+    <input type="submit" value="Speichern"
+           class="btn btn-default pull-right" />
+    {{ form_end(form) }}
+
+{% endblock %}

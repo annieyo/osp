@@ -5,7 +5,7 @@ parameters:
 
 services:
     form_authenticator:
-          class: AppBundle\Security\FormAuthenticator
+          class: CoreBundle\Security\FormAuthenticator
           arguments: ["@router"]
 #    service_name:
 #        class: AppBundle\Directory\ClassName

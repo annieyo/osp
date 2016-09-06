@@ -1,7 +1,23 @@
 core_homepage:
     path:     /
-    defaults: { _controller: CoreBundle:Default:index }
+    defaults: { _controller: CoreBundle:Grade:index }
+
+login:
+    path:     /login
+    defaults: { _controller: CoreBundle:Default:login }
+
+logout:
+    path:     /logout
+    defaults: { _controller: CoreBundle:Default:logout }
 
 student_detail:
     path:     /schueler/{id}
     defaults: { _controller: CoreBundle:Grade:detail}
+
+grade_new:
+    path:     /noten/neu
+    defaults: { _controller: CoreBundle:Grade:new}
+
+grade_search:
+    path:     /noten/suchen
+    defaults: { _controller: CoreBundle:Grade:search}
