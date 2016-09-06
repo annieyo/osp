@@ -8,6 +8,10 @@ CoreBundle\Entity\Advisor:
             id: true
             generator:
                 strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
     oneToMany:
         projectGroup:
             targetEntity: ProjectGroup

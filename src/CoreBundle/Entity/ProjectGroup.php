@@ -1,6 +1,7 @@
 <?php
 
 namespace CoreBundle\Entity;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * ProjectGroup
@@ -17,6 +18,38 @@ class ProjectGroup
      */
     private $name;
 
+    /**
+     * @var \CoreBundle\Entity\GroupRating
+     */
+    private $groupRating;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $students;
+
+    /**
+     * @var \CoreBundle\Entity\ProjectClass
+     */
+    private $projectClass;
+
+    /**
+     * @var \CoreBundle\Entity\Advisor
+     */
+    private $advisor;
+
+    /**
+     * @var \CoreBundle\Entity\Topic
+     */
+    private $topic;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->students = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -51,38 +84,6 @@ class ProjectGroup
     {
         return $this->name;
     }
-    /**
-     * @var \CoreBundle\Entity\GroupRating
-     */
-    private $groupRating;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $students;
-
-    /**
-     * @var \CoreBundle\Entity\ProjectClass
-     */
-    private $projectClass;
-
-    /**
-     * @var \CoreBundle\Entity\Advisor
-     */
-    private $advisor;
-
-    /**
-     * @var \CoreBundle\Entity\Topic
-     */
-    private $topic;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->students = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Set groupRating
@@ -91,7 +92,7 @@ class ProjectGroup
      *
      * @return ProjectGroup
      */
-    public function setGroupRating(\CoreBundle\Entity\GroupRating $groupRating = null)
+    public function setGroupRating(GroupRating $groupRating = null)
     {
         $this->groupRating = $groupRating;
 
@@ -115,7 +116,7 @@ class ProjectGroup
      *
      * @return ProjectGroup
      */
-    public function addStudent(\CoreBundle\Entity\Student $student)
+    public function addStudent(Student $student)
     {
         $this->students[] = $student;
 
@@ -127,7 +128,7 @@ class ProjectGroup
      *
      * @param \CoreBundle\Entity\Student $student
      */
-    public function removeStudent(\CoreBundle\Entity\Student $student)
+    public function removeStudent(Student $student)
     {
         $this->students->removeElement($student);
     }
@@ -149,7 +150,7 @@ class ProjectGroup
      *
      * @return ProjectGroup
      */
-    public function setProjectClass(\CoreBundle\Entity\ProjectClass $projectClass = null)
+    public function setProjectClass(ProjectClass $projectClass = null)
     {
         $this->projectClass = $projectClass;
 
@@ -173,7 +174,7 @@ class ProjectGroup
      *
      * @return ProjectGroup
      */
-    public function setAdvisor(\CoreBundle\Entity\Advisor $advisor = null)
+    public function setAdvisor(Advisor $advisor = null)
     {
         $this->advisor = $advisor;
 
@@ -197,7 +198,7 @@ class ProjectGroup
      *
      * @return ProjectGroup
      */
-    public function setTopic(\CoreBundle\Entity\Topic $topic = null)
+    public function setTopic(Topic $topic = null)
     {
         $this->topic = $topic;
 

@@ -2,7 +2,9 @@
 
 namespace CoreBundle\Controller;
 
+use CoreBundle\Entity\GroupRating;
 use CoreBundle\Entity\ProjectGroup;
+use CoreBundle\Entity\SingleRating;
 use CoreBundle\Entity\Student;
 use CoreBundle\Form\GroupSelectType;
 use CoreBundle\Form\GroupType;
@@ -26,6 +28,8 @@ class GradeController extends Controller
      */
     public function newAction(Request $request)
     {
+        $session = $request->getSession();
+
         $student = new Student();
         $form = $this->createForm(StudentType::class, $student);
 
@@ -38,18 +42,58 @@ class GradeController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            $group->
-            $student->setProjectGroup($group);
 
-            var_dump($student);
-            var_dump($group);
-            die();
 
-            $em->persist($student);
+            if ($request->request->get('group_exists')) {
+
+            } else {
+
+
+                $studentData = $request->request->get('student');
+                $groupData = $request->request->get('group');
+
+                $group->setName($groupData['name']);
+
+                $advisor = $this->getDoctrine()->getRepository('CoreBundle:Advisor')->find($groupData['advisor']);
+                $topic = $this->getDoctrine()->getRepository('CoreBundle:Topic')->find($groupData['topic']);
+                $projectClass = $this->getDoctrine()->getRepository('CoreBundle:ProjectClass')->find($groupData['projectClass']);
+
+                $group->setAdvisor($advisor);
+                $group->setTopic($topic);
+                $group->setProjectClass($projectClass);
+
+
+                $groupRating = new GroupRating();
+                $groupRating->setDocumentation($groupData['documentation']);
+                $groupRating->setProduct($groupData['product']);
+                $groupRating->setProjectGroup($group);
+                $group->setGroupRating($groupRating);
+
+                $singleRating = new SingleRating();
+                $singleRating->setStudent($student);
+                $singleRating->setDiscussion($studentData['discussion']);
+                $singleRating->setPresentation($studentData['presentation']);
+                $singleRating->setTotalGso($studentData['totalGso']);
+                $singleRating->setTotalIhk($studentData['totalIhk']);
+
+
+
+                $student->setProjectGroup($group);
+                $student->setSingleRating($singleRating);
+
+                $em->persist($group);
+                $em->persist($student);
+            }
+
             $em->flush();
 
+            $session->getFlashBag()->add(
+                'success',
+                'Die Noten wurden erfolgreich eingetragen!'
+            );
+
             return $this->redirect($this->generateUrl(
-                'grade_search'
+                'grade_new'
             ));
         }
 

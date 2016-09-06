@@ -44,6 +44,22 @@ class StudentType extends AbstractType
                 )
             )
             ->add(
+                'totalGso',
+                TextType::class,
+                array(
+                    'mapped' => false,
+                    'label' => 'Gesamtnote GSO',
+                )
+            )
+            ->add(
+                'totalIhk',
+                TextType::class,
+                array(
+                    'mapped' => false,
+                    'label' => 'Gesamtnote IHK',
+                )
+            )
+            ->add(
                 'group_exists',
                 ChoiceType::class, array(
                     'choices'  => array(

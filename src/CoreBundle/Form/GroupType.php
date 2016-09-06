@@ -46,7 +46,7 @@ class GroupType extends AbstractType
                 'advisor',
                 EntityType::class,
                 array(
-                    'class' => 'CoreBundle:Topic',
+                    'class' => 'CoreBundle:Advisor',
                     'choice_label' => 'name',
                     'multiple' => false,
                     'expanded' => false,

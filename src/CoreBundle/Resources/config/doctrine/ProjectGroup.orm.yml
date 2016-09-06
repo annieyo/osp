@@ -16,6 +16,7 @@ CoreBundle\Entity\ProjectGroup:
         groupRating:
             targetEntity: GroupRating
             mappedBy: projectGroup
+            cascade: ["persist"]
     oneToMany:
         students:
             targetEntity: Student

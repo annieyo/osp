@@ -98,4 +98,3 @@ class ProjectClass
         return $this->projectGroup;
     }
 }
-
