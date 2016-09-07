@@ -125,9 +125,7 @@ class GradeController extends Controller
             $topic = $request->request->get('filter')['topic'];
 
             $results = $studentRepository->getSearchResult($searchTerms, $advisor, $topic);
-            //$results = $em->getRepository('CoreBundle:Student')->findAll();
 
-            var_dump(count($results));
 
             if (count($results) == 1) {
                 return $this->render(
