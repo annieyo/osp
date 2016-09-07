@@ -94,7 +94,6 @@ class StudentType extends AbstractType
             ->add(
                 'group_exists',
                 ChoiceType::class, array(
-                    'constraints' => new NotBlank(),
                     'choices'  => array(
                         'bestehende' => false,
                         'neue Gruppe' => true,

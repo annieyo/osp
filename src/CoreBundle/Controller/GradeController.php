@@ -43,16 +43,25 @@ class GradeController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
+            $studentData = $request->request->get('student');
+
+            $singleRating = new SingleRating();
+            $singleRating->setStudent($student);
+            $singleRating->setDiscussion($studentData['discussion']);
+            $singleRating->setPresentation($studentData['presentation']);
+            $singleRating->setTotalGso($studentData['totalGso']);
+            $singleRating->setTotalIhk($studentData['totalIhk']);
 
 
-            if ($request->request->get('group_exists')) {
+            if (!$request->request->get('student')['group_exists']) {
+                // group exists
 
+                $selectedGroupId = $request->request->get('group_select')['selectedGroup'];
+                $selectedGroup = $this->getDoctrine()->getRepository('CoreBundle:ProjectGroup')->find($selectedGroupId);
+
+                $student->setProjectGroup($selectedGroup);
             } else {
-
-
-                $studentData = $request->request->get('student');
                 $groupData = $request->request->get('group');
-
                 $group->setName($groupData['name']);
 
                 $advisor = $this->getDoctrine()->getRepository('CoreBundle:Advisor')->find($groupData['advisor']);
@@ -63,29 +72,20 @@ class GradeController extends Controller
                 $group->setTopic($topic);
                 $group->setProjectClass($projectClass);
 
-
                 $groupRating = new GroupRating();
                 $groupRating->setDocumentation($groupData['documentation']);
                 $groupRating->setProduct($groupData['product']);
                 $groupRating->setProjectGroup($group);
                 $group->setGroupRating($groupRating);
 
-                $singleRating = new SingleRating();
-                $singleRating->setStudent($student);
-                $singleRating->setDiscussion($studentData['discussion']);
-                $singleRating->setPresentation($studentData['presentation']);
-                $singleRating->setTotalGso($studentData['totalGso']);
-                $singleRating->setTotalIhk($studentData['totalIhk']);
-
-
-
                 $student->setProjectGroup($group);
-                $student->setSingleRating($singleRating);
 
                 $em->persist($group);
-                $em->persist($student);
             }
 
+            $student->setSingleRating($singleRating);
+
+            $em->persist($student);
             $em->flush();
 
             $session->getFlashBag()->add(

@@ -47,6 +47,7 @@ class FilterType extends AbstractType
                 array(
                     'mapped' => false,
                     'label' => 'Name',
+                    'required' => false
                 )
             );
     }
