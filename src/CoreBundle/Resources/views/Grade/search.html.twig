@@ -19,7 +19,7 @@
         <table>
             {% for result in results %}
             <tr>
-                <td>{{ result.name }}</td>
+                <td><a href="{{ path('student_detail', { 'id': result.id }) }}">{{ result.name }}</a></td>
                 <td>{{ result.projectGroup.name }}</td>
                 <td>{{ result.projectGroup.projectClass.name }}</td>
             </tr>

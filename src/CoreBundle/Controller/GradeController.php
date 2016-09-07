@@ -108,7 +108,10 @@ class GradeController extends Controller
         );
     }
 
-
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function searchAction(Request $request)
     {
         $session = $request->getSession();
@@ -128,12 +131,7 @@ class GradeController extends Controller
             $results = $studentRepository->getSearchResult($searchTerms, $advisor, $topic);
 
             if (count($results) == 1) {
-                return $this->render(
-                    'CoreBundle:Grade:detail.html.twig',
-                    array(
-                        'student' => $results[0]
-                    )
-                );
+                return $this->redirectToRoute('student_detail', array('id' => $results[0]->getId()));
             }
 
             if (count($results) == 0) {
@@ -150,7 +148,6 @@ class GradeController extends Controller
                 );
             }
 
-
             return $this->render(
                 'CoreBundle:Grade:search.html.twig',
                 array(
@@ -158,7 +155,6 @@ class GradeController extends Controller
                     'results' => $results
                 )
             );
-
         }
 
         return $this->render(
@@ -178,7 +174,7 @@ class GradeController extends Controller
         $student = $this->getDoctrine()
             ->getManager()
             ->getRepository('CoreBundle:Student')
-            ->findBy(array('id', $id));
+            ->findOneBy(array('id' => $id));
 
         return $this->render(
             'CoreBundle:Grade:detail.html.twig',
