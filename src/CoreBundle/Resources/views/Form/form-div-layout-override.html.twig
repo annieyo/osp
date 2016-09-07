@@ -245,13 +245,13 @@
 {%- endblock repeated_row -%}
 
 {%- block form_row -%}
-    <div class="row form-row">
-        <div class="input-field col s6">
+    {#<div class="row form-row">#}
+        <div class="input-field col s12">
             {{- form_widget(form) -}}
             {{- form_label(form) -}}
             {{- form_errors(form) -}}
         </div>
-    </div>
+    {#</div>#}
 {%- endblock form_row -%}
 
 {%- block button_row -%}

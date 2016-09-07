@@ -7,34 +7,50 @@
 {% block content %}
 
     <div class="main card-panel">
-
-        <h2 class="header">Schüler hinzufügen</h2>
-
-        {{ form_start(form) }}
-
-        {{ form_row(form.name)}}
-        {{ form_row(form.discussion) }}
-        {{ form_row(form.presentation) }}
-        {{ form_row(form.totalGso) }}
-        {{ form_row(form.totalIhk) }}
-
-        {{ form_row(form.group_exists) }}
-
-        <div id="existing">
-            {{ form_widget(groupSelectForm) }}
-        </div>
-
-        <div id="notexisting">
-            {{ form_widget(groupForm) }}
-        </div>
-
+        <div class="container">
         <div class="row">
-            <div class="input-field col s6">
-                <a  type="submit" value="Speichern"  class="waves-effect waves-light btn"><i class="material-icons left">done</i>Speichern</a>
+            <div class="col s12">
+                <h2 class="header">Schüler hinzufügen</h2>
             </div>
         </div>
 
+            {{ form_start(form) }}
+            <div id="new-student-form" class="two-col-content">
+                <div class="row">
+                    <div class="col s6">
+                        {{ form_row(form.name)}}
+                        {{ form_row(form.discussion) }}
+                        {{ form_row(form.presentation) }}
+                        {{ form_row(form.totalGso) }}
+                        {{ form_row(form.totalIhk) }}
+                    </div>
+                    <div class="col s6">
 
-        {{ form_end(form) }}
+
+                        {{ form_row(form.group_exists) }}
+
+                        <div id="existing">
+                            {{ form_widget(groupSelectForm) }}
+                        </div>
+
+                        <div id="notexisting">
+                            {{ form_widget(groupForm) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <div class="col s6">
+                            <button type="submit" value="Suchen" class="btn btn-default pull-right">
+                                <i class="material-icons left">done</i>Speichern
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{ form_end(form) }}
+        </div>
     </div>
 {% endblock %}

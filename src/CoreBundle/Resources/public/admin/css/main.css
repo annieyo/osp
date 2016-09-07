@@ -25,7 +25,7 @@
 }
 
 h2.header {
-    margin: 5px 0 10px;
+    margin: 5px 0 0;
 }
 
 .waves-effect.waves-light.btn.orange.accent-3 {
@@ -40,10 +40,34 @@ h2.header {
     margin-bottom: 0;
 }
 
-#student_group_exists {
-    margin: -10px 0 30px -15px !important;
-}
-
 #student_group_exists > label {
     margin-right: 50px;
 }
+
+#student_group_exists {
+    margin: -2px 0 17px -15px !important;
+    padding-bottom: 20px;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+@media only screen and (min-width: 993px) {
+    .container {
+        width: 100% !important;
+    }
+}
+
+.two-col-content .row > .col {
+    padding: 0;
+}
+
+
+/*#new-student-form .row .col:first-child {*/
+    /*padding-left: 0;*/
+/*}*/
+
+/*#new-student-form .row .col:first-child .input-field label {*/
+    /*left: 0rem;*/
+/*}*/

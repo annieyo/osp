@@ -23,7 +23,7 @@
             <ul id="nav-mobile" class="right">
                 <li {% if app.request.get('_route') == 'grade_new' %} class="active"{% endif %}><a href="{{ path('grade_new') }}">Hinzufügen</a></li>
                 <li {% if app.request.get('_route') == 'grade_search' %} class="active"{% endif %}><a href="{{ path('grade_search') }}">Suchen</a></li>
-                <a href="/logout" class="waves-effect waves-light btn  orange accent-3"><i class="material-icons left">input</i>Logout</a>
+                <a href="{{ path('logout') }}" class="waves-effect waves-light btn  orange accent-3"><i class="material-icons left">input</i>Logout</a>
             </ul>
         </div>
     </nav>
@@ -32,7 +32,6 @@
 {% endblock %}
 
 {% block javascripts %}
-    {#<script src="/bundles/core/admin/js/scripts.js"></script>#}
     {% javascripts '@CoreBundle/Resources/public/admin/js/*' %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}

@@ -8,7 +8,6 @@
 
     <h2 class="header">Schüler suchen</h2>
 
-
     {% if results is defined %}
     <table>
         {% for result in results %}
@@ -21,6 +20,7 @@
     </table>
 
     {% else %}
+
         {{ form_start(form) }}
         {{ form_widget(form) }}
 
