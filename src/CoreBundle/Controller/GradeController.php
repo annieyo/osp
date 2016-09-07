@@ -6,6 +6,7 @@ use CoreBundle\Entity\GroupRating;
 use CoreBundle\Entity\ProjectGroup;
 use CoreBundle\Entity\SingleRating;
 use CoreBundle\Entity\Student;
+use CoreBundle\Form\FilterType;
 use CoreBundle\Form\GroupSelectType;
 use CoreBundle\Form\GroupType;
 use CoreBundle\Form\StudentType;
@@ -103,6 +104,54 @@ class GradeController extends Controller
                 'form' => $form->createView(),
                 'groupForm' => $groupForm->createView(),
                 'groupSelectForm' => $groupSelectForm->createView(),
+            )
+        );
+    }
+
+
+    public function searchAction(Request $request)
+    {
+        $group = new ProjectGroup();
+        $form = $this->createForm(FilterType::class, $group);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $studentRepository = $em->getRepository('CoreBundle:Student');
+
+            $searchTerms = explode(' ', $request->request->get('filter')['name']);
+            $advisor = $request->request->get('filter')['advisor'];
+            $topic = $request->request->get('filter')['topic'];
+
+            $results = $studentRepository->getSearchResult($searchTerms, $advisor, $topic);
+            //$results = $em->getRepository('CoreBundle:Student')->findAll();
+
+            var_dump(count($results));
+
+            if (count($results) == 1) {
+                return $this->render(
+                    'CoreBundle:Grade:detail.html.twig',
+                    array(
+                        'student' => $results[0]
+                    )
+                );
+            }
+
+            return $this->render(
+                'CoreBundle:Grade:search.html.twig',
+                array(
+                    'form' => $form,
+                    'results' => $results
+                )
+            );
+
+        }
+
+        return $this->render(
+            'CoreBundle:Grade:search.html.twig',
+            array(
+                'form' => $form->createView(),
             )
         );
     }

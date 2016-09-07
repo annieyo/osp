@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class GroupType extends AbstractType
 {
@@ -19,6 +20,7 @@ class GroupType extends AbstractType
                 TextType::class,
                 array(
                     'label' => 'Name',
+                    'constraints' => new NotBlank(),
                 )
             )
             ->add(
@@ -31,6 +33,7 @@ class GroupType extends AbstractType
                     'multiple' => false,
                     'expanded' => false,
                     'label' => 'Thema',
+                    'constraints' => new NotBlank(),
                 )
             )
             ->add(
@@ -43,6 +46,7 @@ class GroupType extends AbstractType
                     'multiple' => false,
                     'expanded' => false,
                     'label' => 'Klasse',
+                    'constraints' => new NotBlank(),
                 )
             )
             ->add(
@@ -55,6 +59,7 @@ class GroupType extends AbstractType
                     'multiple' => false,
                     'expanded' => false,
                     'label' => 'Berater',
+                    'constraints' => new NotBlank(),
                 )
             )
             ->add(
@@ -63,6 +68,7 @@ class GroupType extends AbstractType
                 array(
                     'mapped' => false,
                     'label' => 'Produkt',
+                    'constraints' => new NotBlank(),
                 )
             )
             ->add(
@@ -71,6 +77,7 @@ class GroupType extends AbstractType
                 array(
                     'mapped' => false,
                     'label' => 'Dokumentation',
+                    'constraints' => new NotBlank(),
                 )
             );
     }

@@ -22,6 +22,16 @@ class Student
      */
     private $firstName;
 
+    /**
+     * @var \CoreBundle\Entity\SingleRating
+     */
+    private $singleRating;
+
+    /**
+     * @var \CoreBundle\Entity\ProjectGroup
+     */
+    private $projectGroup;
+
 
     /**
      * Get id
@@ -80,16 +90,6 @@ class Student
     {
         return $this->firstName;
     }
-    /**
-     * @var \CoreBundle\Entity\SingleRating
-     */
-    private $singleRating;
-
-    /**
-     * @var \CoreBundle\Entity\ProjectGroup
-     */
-    private $projectGroup;
-
 
     /**
      * Set singleRating

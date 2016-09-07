@@ -1,0 +1,25 @@
+{% extends 'CoreBundle::layout.html.twig' %}
+
+{% block content %}
+
+    {% if results is defined %}
+    <table>
+        {% for result in results %}
+        <tr>
+            <td>{{ result.name }}</td>
+            <td>{{ result.projectGroup.name }}</td>
+            <td>{{ result.projectGroup.projectClass.name }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% else %}
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+
+        <input type="submit" value="Suchen"
+               class="btn btn-default pull-right" />
+        {{ form_end(form) }}
+    {% endif %}
+
+{% endblock %}

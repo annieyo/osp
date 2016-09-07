@@ -7,6 +7,8 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Range;
 
 class StudentType extends AbstractType
 {
@@ -18,13 +20,7 @@ class StudentType extends AbstractType
                 TextType::class,
                 array(
                     'label' => 'Name',
-                )
-            )
-            ->add(
-                'first_name',
-                TextType::class,
-                array(
-                    'label' => 'Vorname',
+                    'constraints' => new NotBlank(),
                 )
             )
             ->add(
@@ -33,6 +29,15 @@ class StudentType extends AbstractType
                 array(
                     'mapped' => false,
                     'label' => 'Fachgespräch',
+                    'constraints' => array(
+                        new NotBlank(),
+                        new Range(array(
+                            'min'        => 1,
+                            'max'        => 6,
+                            'minMessage' => 'Bitte eine Wert zwischen 1 und 6 wählen.',
+                            'maxMessage' => 'Bitte eine Wert zwischen 1 und 6 wählen.',
+                        ))
+                    )
                 )
             )
             ->add(
@@ -41,6 +46,15 @@ class StudentType extends AbstractType
                 array(
                     'mapped' => false,
                     'label' => 'Präsentation',
+                    'constraints' => array(
+                        new NotBlank(),
+                        new Range(array(
+                            'min'        => 1,
+                            'max'        => 6,
+                            'minMessage' => 'Bitte eine Wert zwischen 1 und 6 wählen.',
+                            'maxMessage' => 'Bitte eine Wert zwischen 1 und 6 wählen.',
+                        ))
+                    )
                 )
             )
             ->add(
@@ -49,6 +63,15 @@ class StudentType extends AbstractType
                 array(
                     'mapped' => false,
                     'label' => 'Gesamtnote GSO',
+                    'constraints' => array(
+                        new NotBlank(),
+                        new Range(array(
+                            'min'        => 1,
+                            'max'        => 6,
+                            'minMessage' => 'Bitte eine Wert zwischen 1 und 6 wählen.',
+                            'maxMessage' => 'Bitte eine Wert zwischen 1 und 6 wählen.',
+                        ))
+                    )
                 )
             )
             ->add(
@@ -57,11 +80,21 @@ class StudentType extends AbstractType
                 array(
                     'mapped' => false,
                     'label' => 'Gesamtnote IHK',
+                    'constraints' => array(
+                        new NotBlank(),
+                        new Range(array(
+                            'min'        => 1,
+                            'max'        => 6,
+                            'minMessage' => 'Bitte eine Wert zwischen 1 und 6 wählen.',
+                            'maxMessage' => 'Bitte eine Wert zwischen 1 und 6 wählen.',
+                        ))
+                    )
                 )
             )
             ->add(
                 'group_exists',
                 ChoiceType::class, array(
+                    'constraints' => new NotBlank(),
                     'choices'  => array(
                         'bestehende' => false,
                         'neue Gruppe' => true,
