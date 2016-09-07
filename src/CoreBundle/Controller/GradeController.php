@@ -39,8 +39,10 @@ class GradeController extends Controller
         $groupSelectForm = $this->createForm(GroupSelectType::class, $group);
 
         $form->handleRequest($request);
+        $groupForm->handleRequest($request);
+        $groupSelectForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid() && ($groupForm->isValid()||$groupSelectForm->isValid())) {
             $em = $this->getDoctrine()->getManager();
 
             $studentData = $request->request->get('student');
@@ -52,26 +54,19 @@ class GradeController extends Controller
             $singleRating->setTotalGso($studentData['totalGso']);
             $singleRating->setTotalIhk($studentData['totalIhk']);
 
-            if($request->request->get('student')['group_exists'] == 0 && $request->request->get('group')['name'] == "") {
-
-                $session->getFlashBag()->add(
-                    'warning',
-                    'Noten nicht gespeichert. Bitte Gruppe wählen'
-                );
-
-                return $this->redirect($this->generateUrl(
-                    'grade_new'
-                ));
-            }
 
             if (!$request->request->get('student')['group_exists']) {
                 // group exists
+
+
 
                 $selectedGroupId = $request->request->get('group_select')['selectedGroup'];
                 $selectedGroup = $this->getDoctrine()->getRepository('CoreBundle:ProjectGroup')->find($selectedGroupId);
 
                 $student->setProjectGroup($selectedGroup);
             } else {
+
+
                 $groupData = $request->request->get('group');
                 $group->setName($groupData['name']);
 
@@ -268,6 +263,7 @@ class GradeController extends Controller
                 'CoreBundle:Grade:search.html.twig',
                 array(
                     'form' => $form->createView(),
+                    'total' => sizeof($results),
                     'results' => $results
                 )
             );
@@ -277,6 +273,7 @@ class GradeController extends Controller
             'CoreBundle:Grade:search.html.twig',
             array(
                 'form' => $form->createView(),
+                'total' => false,
             )
         );
     }

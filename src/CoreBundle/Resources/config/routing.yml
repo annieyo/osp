@@ -1,6 +1,6 @@
 core_homepage:
     path:     /
-    defaults: { _controller: CoreBundle:Grade:index }
+    defaults: { _controller: CoreBundle:Grade:search}
 
 login:
     path:     /login
