@@ -6,42 +6,26 @@
 
         {%- include "MaterializeBundle:Materialize:css.html.twig" -%}
 
-        {#{% stylesheets#}
-        {#output='@CoreBundle/Resources/public/vendor/materialize/fonts/*'#}
-        {#%}{% endstylesheets %}#}
-
-        {#{% stylesheets '@CoreBundle/Resources/public/vendor/materialize/css/*' filter='cssrewrite' %}#}
-        {#<link rel="stylesheet" href="{{ asset_url }}" />#}
-        {#{% endstylesheets %}#}
-
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        {#<link rel="stylesheet" href="/bundles/core/vendor/materialize/css/materialize.min.css" />#}
-        {#<link rel="icon" href="/bundles/core/fav.ico" type="image/x-icon" />#}
 
         {% block stylesheets %}
         {% endblock %}
+
+        {% image '@CoreBundle/Resources/public/images/fav.png'  output="fav.png" %}
+        <link rel="icon" href="{{ asset_url }}" type="image/x-icon" />
+        {% endimage %}
+
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body class="{% block bodyClass %}{% endblock %}">
 
-    {% for label, flashes in app.session.flashbag.all %}
-        {% for flash in flashes %}
-            <div class="alert alert-{{ label }}">
-                {{ flash }}
-            </div>
-        {% endfor %}
-    {% endfor %}
-
         {% block body %}{% endblock %}
 
-    {#<script src="/bundles/core/vendor/jquery/jquery.js"></script>#}
     {% javascripts '@CoreBundle/Resources/public/vendor/jquery/*' %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {%- include "MaterializeBundle:Materialize:js.html.twig" -%}
-
-        {#<script src="/bundles/core/vendor/materialize/js/materialize.min.js"></script>#}
 
         {% block javascripts %}
         {% endblock %}

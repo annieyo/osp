@@ -17,7 +17,7 @@
         <div class="nav-wrapper">
 
             {% image '@CoreBundle/Resources/public/images/logo_white.png'  output="images/logo_white.png" %}
-            <a href="#" class="gso-logo"><img src="{{ asset_url }}"></a>
+            <a href="{{ path('grade_search') }}" class="gso-logo"><img src="{{ asset_url }}"></a>
             {% endimage %}
 
             <ul id="nav-mobile" class="right">
@@ -27,6 +27,13 @@
             </ul>
         </div>
     </nav>
+    {% for label, flashes in app.session.flashbag.all %}
+        {% for flash in flashes %}
+            <div class="alert alert-{{ label }}">
+                {{ flash }}
+            </div>
+        {% endfor %}
+    {% endfor %}
     {% block content %}{% endblock %}
 
 {% endblock %}

@@ -6,27 +6,61 @@
 
 <div class="main card-panel">
 
-    <h2 class="header">Schüler suchen</h2>
+    <div class="container">
 
-    {% if results is defined %}
-    <table>
-        {% for result in results %}
-        <tr>
-            <td>{{ result.name }}</td>
-            <td>{{ result.projectGroup.name }}</td>
-            <td>{{ result.projectGroup.projectClass.name }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+        <div class="row">
+            <div class="col s12">
+                <h2 class="header">Schüler suchen</h2>
+            </div>
+        </div>
 
-    {% else %}
+
+        {% if results is defined %}
+        <table>
+            {% for result in results %}
+            <tr>
+                <td>{{ result.name }}</td>
+                <td>{{ result.projectGroup.name }}</td>
+                <td>{{ result.projectGroup.projectClass.name }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        {% else %}
+
+        <div class="row">
 
         {{ form_start(form) }}
-        {{ form_widget(form) }}
 
-        <input type="submit" value="Suchen"
-               class="btn btn-default pull-right" />
-        {{ form_end(form) }}
+            <div class="col s6">
+                {{ form_widget(form.advisor) }}
+                {{ form_label(form.advisor) }}
+                {{ form_errors(form.advisor) }}
+            </div>
+            <div class="col s6">
+                {{ form_widget(form.topic) }}
+                {{ form_label(form.topic) }}
+                {{ form_errors(form.topic) }}
+            </div>
+            <div class="col s6 input-field">
+
+                {{ form_widget(form.name) }}
+                {{ form_label(form.name) }}
+                {{ form_errors(form.name) }}
+            </div>
+
+
+            {{ form_widget(form) }}
+
+
+            <div class="col s12 margin-top-20">
+                <input type="submit" value="Suchen"
+                       class="btn btn-default pull-right" />
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
     {% endif %}
 </div>
 {% endblock %}
