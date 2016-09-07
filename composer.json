@@ -30,7 +30,8 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "doctrine/doctrine-migrations-bundle": "^1.2",
         "symfony/assetic-bundle": "^2.8",
-        "evheniy/materialize-bundle": "1.*"
+        "evheniy/materialize-bundle": "1.*",
+        "phpoffice/phpexcel": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

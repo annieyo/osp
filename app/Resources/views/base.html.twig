@@ -11,6 +11,7 @@
         {% block stylesheets %}
         {% endblock %}
 
+
         {% image '@CoreBundle/Resources/public/images/fav.png'  output="fav.png" %}
         <link rel="icon" href="{{ asset_url }}" type="image/x-icon" />
         {% endimage %}
@@ -22,10 +23,11 @@
 
         {% block body %}{% endblock %}
 
-    {% javascripts '@CoreBundle/Resources/public/vendor/jquery/*' %}
-    <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-    {%- include "MaterializeBundle:Materialize:js.html.twig" -%}
+        {% javascripts '@CoreBundle/Resources/public/vendor/jquery/*' %}
+        <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+
+        {%- include "MaterializeBundle:Materialize:js.html.twig" -%}
 
         {% block javascripts %}
         {% endblock %}

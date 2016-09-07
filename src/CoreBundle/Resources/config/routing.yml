@@ -2,6 +2,10 @@ core_homepage:
     path:     /
     defaults: { _controller: CoreBundle:Grade:search}
 
+grade_import:
+    path:     /import
+    defaults: { _controller: CoreBundle:Grade:import}
+
 login:
     path:     /login
     defaults: { _controller: CoreBundle:Default:login }
