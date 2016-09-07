@@ -111,6 +111,7 @@ class GradeController extends Controller
 
     public function searchAction(Request $request)
     {
+        $session = $request->getSession();
         $group = new ProjectGroup();
         $form = $this->createForm(FilterType::class, $group);
 
@@ -126,7 +127,6 @@ class GradeController extends Controller
 
             $results = $studentRepository->getSearchResult($searchTerms, $advisor, $topic);
 
-
             if (count($results) == 1) {
                 return $this->render(
                     'CoreBundle:Grade:detail.html.twig',
@@ -136,10 +136,25 @@ class GradeController extends Controller
                 );
             }
 
+            if (count($results) == 0) {
+                $session->getFlashBag()->add(
+                    'danger',
+                    'Es wurden keine Einträge gefunden'
+                );
+
+                return $this->render(
+                    'CoreBundle:Grade:search.html.twig',
+                    array(
+                        'form' => $form->createView()
+                    )
+                );
+            }
+
+
             return $this->render(
                 'CoreBundle:Grade:search.html.twig',
                 array(
-                    'form' => $form,
+                    'form' => $form->createView(),
                     'results' => $results
                 )
             );
@@ -156,9 +171,20 @@ class GradeController extends Controller
 
     /**
      * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function detailAction($id)
     {
-        echo $id; exit;
+        $student = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('CoreBundle:Student')
+            ->findBy(array('id', $id));
+
+        return $this->render(
+            'CoreBundle:Grade:detail.html.twig',
+            array(
+                'student' => $student
+            )
+        );
     }
 }
