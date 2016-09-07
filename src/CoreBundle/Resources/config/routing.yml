@@ -25,3 +25,7 @@ grade_search:
 grade_delete:
     path:     /noten/loeschen/{id}
     defaults: { _controller: CoreBundle:Grade:delete}
+
+grade_edit:
+    path:     /noten/bearbeiten/{id}
+    defaults: { _controller: CoreBundle:Grade:edit}

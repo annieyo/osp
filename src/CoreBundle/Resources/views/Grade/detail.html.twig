@@ -6,9 +6,14 @@
         <tr>
             <td>{{ student.name }}</td>
             <td>{{ student.projectGroup.projectClass.name }}</td>
+            <td>{{ student.projectGroup.topic.name }}</td>
+            <td>{{ student.projectGroup.advisor.name }}</td>
+            <td>{{ student.projectGroup.name }}</td>
             Einzelnoten:
             <td>{{ student.singleRating.presentation }}</td>
             <td>{{ student.singleRating.discussion }}</td>
+            <td>{{ student.singleRating.totalGso }}</td>
+            <td>{{ student.singleRating.totalIhk }}</td>
             Gruppennoten:
             <td>{{ student.projectGroup.groupRating.documentation }}</td>
             <td>{{ student.projectGroup.groupRating.product }}</td>
@@ -17,5 +22,6 @@
     </table>
 
     <a href="{{ path('grade_delete', { 'id': student.id }) }}">löschen</a>
+    <a href="{{ path('grade_edit', { 'id': student.id }) }}">bearbeiten</a>
 
 {% endblock %}
