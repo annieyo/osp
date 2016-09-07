@@ -2,24 +2,18 @@
 
 {% block content %}
 
-    {% if results is defined %}
     <table>
-        {% for result in results %}
         <tr>
-            <td>{{ result.name }}</td>
-            <td>{{ result.projectGroup.name }}</td>
-            <td>{{ result.projectGroup.projectClass.name }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.projectGroup.projectClass.name }}</td>
+            Einzelnoten:
+            <td>{{ student.singleRating.presentation }}</td>
+            <td>{{ student.singleRating.discussion }}</td>
+            Gruppennoten:
+            <td>{{ student.projectGroup.groupRating.documentation }}</td>
+            <td>{{ student.projectGroup.groupRating.product }}</td>
+            <td>{{ student.projectGroup.name }}</td>
         </tr>
-        {% endfor %}
     </table>
-
-    {% else %}
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-
-        <input type="submit" value="Suchen"
-               class="btn btn-default pull-right" />
-        {{ form_end(form) }}
-    {% endif %}
 
 {% endblock %}
