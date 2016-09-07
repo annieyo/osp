@@ -102,7 +102,8 @@ class StudentType extends AbstractType
                     'multiple' => false,
                     'expanded' => true,
                     'mapped'   => false,
-                    'label'    => false
+                    'label'    => false,
+                    'data' => 0
                 )
             );
     }

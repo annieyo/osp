@@ -30,6 +30,8 @@
 # Assets and user uploads
 /web/bundles/*
 /web/uploads/*
+/web/*
+/var/*
 
 # Assets managed by Bower
 /web/assets/vendor/

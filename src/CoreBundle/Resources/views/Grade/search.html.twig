@@ -1,6 +1,13 @@
 {% extends 'CoreBundle::layout.html.twig' %}
 
+{% form_theme form with ['CoreBundle:Form:form-div-layout-override.html.twig'] %}
+
 {% block content %}
+
+<div class="main card-panel">
+
+    <h2 class="header">Schüler suchen</h2>
+
 
     {% if results is defined %}
     <table>
@@ -21,5 +28,5 @@
                class="btn btn-default pull-right" />
         {{ form_end(form) }}
     {% endif %}
-
+</div>
 {% endblock %}

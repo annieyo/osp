@@ -10,9 +10,15 @@
 
         <h2 class="header">Schüler hinzufügen</h2>
 
-
         {{ form_start(form) }}
-        {{ form_widget(form) }}
+
+        {{ form_row(form.name)}}
+        {{ form_row(form.discussion) }}
+        {{ form_row(form.presentation) }}
+        {{ form_row(form.totalGso) }}
+        {{ form_row(form.totalIhk) }}
+
+        {{ form_row(form.group_exists) }}
 
         <div id="existing">
             {{ form_widget(groupSelectForm) }}
@@ -24,8 +30,7 @@
 
         <div class="row">
             <div class="input-field col s6">
-                {#<input type="submit" value="Speichern" class="btn btn-default pull-right blue" />#}
-                <a  type="submit" value="Speichern"  class="waves-effect waves-light btn blue"><i class="material-icons left">done</i>Speichern</a>
+                <a  type="submit" value="Speichern"  class="waves-effect waves-light btn"><i class="material-icons left">done</i>Speichern</a>
             </div>
         </div>
 
