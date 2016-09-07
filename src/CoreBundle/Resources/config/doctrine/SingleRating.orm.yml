@@ -26,3 +26,4 @@ CoreBundle\Entity\SingleRating:
             joinColumn:
                 name: student_id
                 referencedColumnName: id
+                onDelete: CASCADE

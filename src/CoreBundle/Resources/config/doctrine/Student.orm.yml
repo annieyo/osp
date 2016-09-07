@@ -16,7 +16,7 @@ CoreBundle\Entity\Student:
         singleRating:
             targetEntity: SingleRating
             mappedBy: student
-            cascade: ["persist"]
+            cascade: ["persist", "remove"]
     manyToOne:
         projectGroup:
             targetEntity: ProjectGroup

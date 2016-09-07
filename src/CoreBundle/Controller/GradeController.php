@@ -183,4 +183,32 @@ class GradeController extends Controller
             )
         );
     }
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function deleteAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $session = $request->getSession();
+
+        $student = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('CoreBundle:Student')
+            ->findOneBy(array('id' => $id));
+
+        if ($student) {
+            $em->remove($student);
+            $em->flush();
+
+            $session->getFlashBag()->add(
+                'success',
+                'Der Schüler wurde erfolgreich gelöscht'
+            );
+        }
+
+        return $this->redirectToRoute('grade_search');
+    }
 }

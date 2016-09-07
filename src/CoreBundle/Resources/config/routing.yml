@@ -21,3 +21,7 @@ grade_new:
 grade_search:
     path:     /noten/suchen
     defaults: { _controller: CoreBundle:Grade:search}
+
+grade_delete:
+    path:     /noten/loeschen/{id}
+    defaults: { _controller: CoreBundle:Grade:delete}
