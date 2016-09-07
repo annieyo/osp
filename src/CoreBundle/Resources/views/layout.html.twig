@@ -30,7 +30,10 @@
     {% for label, flashes in app.session.flashbag.all %}
         {% for flash in flashes %}
             <div class="alert alert-{{ label }}">
-                {{ flash }}
+                <div class="message">
+                    {{ flash }}
+                </div>
+
             </div>
         {% endfor %}
     {% endfor %}

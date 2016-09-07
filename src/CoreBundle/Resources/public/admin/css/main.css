@@ -7,10 +7,13 @@
     margin: 3px 0;
 }
 
-.main.card-panel {
-    width: 900px;
-    margin: auto;
-    margin-top: 30px;
+
+input:focus {
+    background-position: 0 0;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
 }
 
 .nav-wrapper {
@@ -39,6 +42,55 @@ h2.header {
 .blue {
     background-color: #428ecc !important;
 }
+
+nav {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+}
+
+.alert {
+    background: #ffeb3b;
+    padding: 15px;
+    position: absolute;
+    width: 100%;
+    top: 64px;
+}
+
+.alert {
+    background: #d1d1d1;
+    padding: 10px;
+    position: absolute;
+    width: 100%;
+    top: 64px;
+}
+
+.alert.alert-danger {
+    background: #ffeb3b;
+}
+
+.alert.alert-success {
+    background: #9ccc65;
+    color: #fff;
+}
+
+.alert.alert-warning {
+    background: #c62828;
+    color: #fff;
+}
+
+.alert .message {
+    width: 900px;
+    margin: auto;
+    font-size: 16px;
+}
+
+.main.card-panel {
+    width: 900px;
+    margin: auto;
+    margin-top: 90px;
+}
+
 
 .row.form-row {
     margin-bottom: 0;

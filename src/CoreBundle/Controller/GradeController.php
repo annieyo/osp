@@ -52,6 +52,17 @@ class GradeController extends Controller
             $singleRating->setTotalGso($studentData['totalGso']);
             $singleRating->setTotalIhk($studentData['totalIhk']);
 
+            if($request->request->get('student')['group_exists'] == 0 && $request->request->get('group')['name'] == "") {
+
+                $session->getFlashBag()->add(
+                    'warning',
+                    'Noten nicht gespeichert. Bitte Gruppe wählen'
+                );
+
+                return $this->redirect($this->generateUrl(
+                    'grade_new'
+                ));
+            }
 
             if (!$request->request->get('student')['group_exists']) {
                 // group exists
