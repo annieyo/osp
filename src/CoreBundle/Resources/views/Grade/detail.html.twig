@@ -94,6 +94,7 @@
         </table>
 
         <div class="detail-btn-group  clearfix">
+            <button type="submit"   onclick="history.go(-1);" class="left btn btn-default pull-left">Zurück</button>
             <a class="waves-effect waves-light btn blue right" href="{{ path('group_edit', { 'id': student.projectGroup.id }) }}">Gruppe bearbeiten</a>
             <a class="waves-effect waves-light btn blue right" href="{{ path('grade_edit', { 'id': student.id }) }}">Schüler bearbeiten</a>
             <a class="waves-effect waves-light btn red darken-1 right" href="{{ path('grade_delete', { 'id': student.id }) }}">löschen</a>

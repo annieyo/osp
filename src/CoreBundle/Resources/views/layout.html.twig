@@ -3,7 +3,6 @@
 {% block title %}OSP - Noten{% endblock %}
 {% block stylesheets %}
 
-    {#<link rel="stylesheet" href="/bundles/core/admin/css/style.css" />#}
     {% stylesheets '@CoreBundle/Resources/public/admin/css/*' filter='cssrewrite' %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
@@ -20,6 +19,7 @@
             <a href="{{ path('grade_search') }}" class="gso-logo"><img src="{{ asset_url }}"></a>
             {% endimage %}
             <ul id="nav-mobile" class="right">
+                <li {% if app.request.get('_route') == 'grade_import' %} class="active"{% endif %}><a href="{{ path('grade_import') }}">Excel Import</a></li>
                 <li {% if app.request.get('_route') == 'grade_new' %} class="active"{% endif %}><a href="{{ path('grade_new') }}">Hinzufügen</a></li>
                 <li {% if (app.request.get('_route') == 'grade_search' or  app.request.get('_route') == 'student_detail') %} class="active"{% endif %}><a href="{{ path('grade_search') }}">Suchen</a></li>
                 <a href="{{ path('logout') }}" class="waves-effect waves-light btn  orange accent-3"><i class="material-icons left">input</i>Logout</a>

@@ -1,30 +1,24 @@
 $(function() {
-    var groupExists0 = $('#student_group_exists_0');
-    var groupExists1 = $('#student_group_exists_1');
-    var notExisting = $('#notexisting');
-    var existing = $('#existing');
+    var changeButton = $('#student_edit_group_exists_0');
+    var createButton = $('#student_edit_group_exists_1');
+    var editButton = $('#student_edit_group_exists_2');
 
-    if(groupExists0.is(':checked')) {
-        changeDisplay(notExisting, existing);
-    }
 
-    if(groupExists1.is(':checked')) {
-        changeDisplay(existing, notExisting);
-    }
-
-    groupExists0.click(function(){
-        changeDisplay(notExisting, existing);
+    changeButton.click(function(){
+        $('.group-form').hide();
+        $('#change-group').show();
     });
 
-    groupExists1.click(function(){
-        changeDisplay(existing, notExisting);
+    createButton.click(function(){
+        $('.group-form').hide();
+        $('#create-group').show();
     });
 
-    function changeDisplay(hide, show, speed) {
-        speed = speed || 250;
-        hide.hide(speed);
-        show.show(speed);
-    }
+    editButton.click(function(){
+        $('.group-form').hide();
+        $('#edit-group').show();
+    });
+
 
     $('select').material_select();
 });

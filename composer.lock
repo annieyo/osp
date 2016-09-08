@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e4e4239dfd62d58a9aa0d04c9936e91d",
-    "content-hash": "69c4344202ba60029fd2dd12a0e87ae4",
+    "hash": "2708e13cb4f8c9876f7ed8620ca8bd60",
+    "content-hash": "3ce76fb4585221a52181eefb85fb5b8b",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1184,72 +1184,6 @@
             "time": "2015-11-12 13:51:40"
         },
         {
-            "name": "liuggio/ExcelBundle",
-            "version": "v2.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/liuggio/ExcelBundle.git",
-                "reference": "b4fe94b64449490a1b5fbbce827c2501be335126"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/liuggio/ExcelBundle/zipball/b4fe94b64449490a1b5fbbce827c2501be335126",
-                "reference": "b4fe94b64449490a1b5fbbce827c2501be335126",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2",
-                "phpoffice/phpexcel": "~1.8.1",
-                "symfony/framework-bundle": "~2.6|~3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.6",
-                "sensio/framework-extra-bundle": "~2.3|~3.0",
-                "symfony/browser-kit": "~2.6|~3.0",
-                "symfony/class-loader": "~2.6|~3.0",
-                "symfony/finder": "~2.6|~3.0",
-                "symfony/form": "~2.6|~3.0",
-                "symfony/validator": "~2.6|~3.0"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ],
-                "psr-4": {
-                    "Liuggio\\ExcelBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "ExcelBundle Contributors",
-                    "homepage": "https://github.com/liuggio/ExcelBundle#contributors"
-                },
-                {
-                    "name": "Giulio De Donato",
-                    "email": "liuggio@gmail.com"
-                }
-            ],
-            "description": "This is a Symfony2 Bundle helps you to read and write Excel files (including pdf, xlsx, odt), thanks to the PHPExcel library",
-            "homepage": "http://www.welcometothebundle.com",
-            "keywords": [
-                "Symfony2",
-                "bundle",
-                "excel",
-                "xls"
-            ],
-            "time": "2016-06-20 17:11:22"
-        },
-        {
             "name": "monolog/monolog",
             "version": "1.21.0",
             "source": {
@@ -1440,16 +1374,16 @@
         },
         {
             "name": "phpoffice/phpexcel",
-            "version": "1.8.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPOffice/PHPExcel.git",
-                "reference": "372c7cbb695a6f6f1e62649381aeaa37e7e70b32"
+                "reference": "049e85ae98a90869e1bc83087f755010e9223091"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPOffice/PHPExcel/zipball/372c7cbb695a6f6f1e62649381aeaa37e7e70b32",
-                "reference": "372c7cbb695a6f6f1e62649381aeaa37e7e70b32",
+                "url": "https://api.github.com/repos/PHPOffice/PHPExcel/zipball/049e85ae98a90869e1bc83087f755010e9223091",
+                "reference": "049e85ae98a90869e1bc83087f755010e9223091",
                 "shasum": ""
             },
             "require": {
@@ -1493,7 +1427,7 @@
                 "xls",
                 "xlsx"
             ],
-            "time": "2015-05-01 07:00:55"
+            "time": "2015-05-05 00:10:25"
         },
         {
             "name": "psr/cache",
@@ -2733,7 +2667,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "phpoffice/phpexcel": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

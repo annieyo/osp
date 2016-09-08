@@ -8,7 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\Range;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class StudentType extends AbstractType
 {
@@ -31,12 +31,10 @@ class StudentType extends AbstractType
                     'label' => 'Fachgespräch',
                     'constraints' => array(
                         new NotBlank(),
-                        new Range(array(
-                            'min'        => 1,
-                            'max'        => 6,
-                            'minMessage' => 'Bitte eine Wert zwischen 1 und 6 wählen.',
-                            'maxMessage' => 'Bitte eine Wert zwischen 1 und 6 wählen.',
-                        ))
+                        new Regex(array(
+                                'pattern'   => '/[1-6]{1}[+-]?/',
+                                'match'     => true,
+                        )),
                     )
                 )
             )
@@ -48,12 +46,10 @@ class StudentType extends AbstractType
                     'label' => 'Präsentation',
                     'constraints' => array(
                         new NotBlank(),
-                        new Range(array(
-                            'min'        => 1,
-                            'max'        => 6,
-                            'minMessage' => 'Bitte eine Wert zwischen 1 und 6 wählen.',
-                            'maxMessage' => 'Bitte eine Wert zwischen 1 und 6 wählen.',
-                        ))
+                        new Regex(array(
+                            'pattern'   => '/[1-6]{1}[+-]?/',
+                            'match'     => true,
+                        )),
                     )
                 )
             )
@@ -65,12 +61,10 @@ class StudentType extends AbstractType
                     'label' => 'Gesamtnote GSO',
                     'constraints' => array(
                         new NotBlank(),
-                        new Range(array(
-                            'min'        => 1,
-                            'max'        => 6,
-                            'minMessage' => 'Bitte eine Wert zwischen 1 und 6 wählen.',
-                            'maxMessage' => 'Bitte eine Wert zwischen 1 und 6 wählen.',
-                        ))
+                        new Regex(array(
+                            'pattern'   => '/[1-6]{1}[+-]?/',
+                            'match'     => true,
+                        )),
                     )
                 )
             )
@@ -82,12 +76,10 @@ class StudentType extends AbstractType
                     'label' => 'Gesamtnote IHK',
                     'constraints' => array(
                         new NotBlank(),
-                        new Range(array(
-                            'min'        => 1,
-                            'max'        => 6,
-                            'minMessage' => 'Bitte eine Wert zwischen 1 und 6 wählen.',
-                            'maxMessage' => 'Bitte eine Wert zwischen 1 und 6 wählen.',
-                        ))
+                        new Regex(array(
+                            'pattern'   => '/[1-6]{1}[+-]?/',
+                            'match'     => true,
+                        )),
                     )
                 )
             )

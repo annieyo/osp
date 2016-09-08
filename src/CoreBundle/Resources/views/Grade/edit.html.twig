@@ -29,12 +29,16 @@
 
                         {{ form_row(form.group_exists) }}
 
-                        <div id="existing">
+                        <div id="change-group" class="group-form">
                             {{ form_widget(groupSelectForm) }}
                         </div>
 
-                        <div id="notexisting">
+                        <div id="create-group" class="group-form">
                             {{ form_widget(groupForm) }}
+                        </div>
+
+                        <div id="edit-group" class="group-form">
+
                         </div>
                     </div>
                 </div>
@@ -43,7 +47,8 @@
 
             <div class="container">
                 <div class="row">
-                    <div class="input-field col s6 offset-s6">
+                    <div class="input-field col s12">
+                        <a onclick="history.go(-1);" class="left btn btn-default pull-left">Zurück</a>
                         <button type="submit" value="Suchen" class="right btn btn-default pull-right">
                             <i class="material-icons left">done</i>Speichern
                         </button>

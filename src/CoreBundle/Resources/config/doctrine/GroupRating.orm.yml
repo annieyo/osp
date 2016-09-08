@@ -10,9 +10,11 @@ CoreBundle\Entity\GroupRating:
                 strategy: AUTO
     fields:
         product:
-            type: integer
+            type: string
+            length: 2
         documentation:
-            type: integer
+            type: string
+            length: 2
     oneToOne:
         projectGroup:
             targetEntity: ProjectGroup

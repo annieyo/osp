@@ -95,9 +95,9 @@ class StudentEditType extends AbstractType
                 'group_exists',
                 ChoiceType::class, array(
                     'choices'  => array(
-                        'bestehende' => 0,
-                        'neue Gruppe' => 1,
-                        'Gruppe bearbeiten' => 2,
+                        'wechseln' => 0,
+                        'neu' => 1,
+                        'bearbeiten' => 2,
                     ),
                     'multiple' => false,
                     'expanded' => true,

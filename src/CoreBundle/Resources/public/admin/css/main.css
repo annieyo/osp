@@ -1,4 +1,4 @@
-#notexisting {
+#create-group, #edit-group {
     display: none;
 }
 
@@ -156,6 +156,9 @@ table table td, table table th {
     padding: 15px 15px;
 }
 
+.min-h-50 {
+    min-height: 50px;
+}
 .grades-table th {
     padding: 15px 15px;
 }

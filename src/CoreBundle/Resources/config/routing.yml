@@ -4,7 +4,7 @@ core_homepage:
 
 grade_import:
     path:     /import
-    defaults: { _controller: CoreBundle:Grade:import}
+    defaults: { _controller: CoreBundle:Import:index}
 
 login:
     path:     /login

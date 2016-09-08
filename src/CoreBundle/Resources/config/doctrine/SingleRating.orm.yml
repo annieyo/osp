@@ -10,14 +10,18 @@ CoreBundle\Entity\SingleRating:
                 strategy: AUTO
     fields:
         discussion:
-            type: integer
+            type: string
+            length: 2
         presentation:
-            type: integer
+            type: string
+            length: 2
         totalIhk:
-            type: integer
+            type: string
+            length: 2
             column: total_ihk
         totalGso:
-            type: integer
+            type: string
+            length: 2
             column: total_gso
     oneToOne:
         student:

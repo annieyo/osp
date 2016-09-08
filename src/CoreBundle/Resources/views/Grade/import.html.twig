@@ -4,15 +4,47 @@
 
     <div class="main card-panel">
         <div class="container">
-        <div class="row">
-            <div class="col s12">
-                <h2 class="header">Excel Import</h2>
+            <div class="row">
+                <div class="col s12">
+                    <h2 class="header">Excel Import</h2>
+                </div>
             </div>
-        </div>
+
+            {#<form method="post" enctype="multipart/form-data">#}
+                {#<input type="file" name="file" id="file" value="" />#}
+                {#<input type="submit" name="commit" value="Send" />#}
+            {#</form>#}
 
             <form method="post" enctype="multipart/form-data">
-                <input type="file" name="file" id="file" value="" />
-                <input type="submit" name="commit" value="Send" />
+                <div class="row">
+                    <div class="col s6">
+
+
+                            <div class="file-field input-field">
+                                <div class="btn">
+                                    <span>File</span>
+                                    <input name="file" type="file">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text">
+                                </div>
+                            </div>
+
+
+                    </div>
+
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col s6 offset-s6">
+                        <button type="submit" value="Import" class="right btn btn-default pull-right">
+                            <i class="material-icons left">done</i>Import
+                        </button>
+                    </div>
+
+                </div>
             </form>
 
         </div>

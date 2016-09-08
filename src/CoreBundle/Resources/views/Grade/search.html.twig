@@ -39,6 +39,10 @@
             </tbody>
         </table>
 
+        <div class="col s12 margin-top-20 min-h-50">
+            <button type="submit"   onclick="history.go(-1);" class="left btn btn-default pull-left">Zurück</button>
+        </div>
+
         {% else %}
 
         <div class="row">
@@ -67,9 +71,10 @@
 
 
             <div class="col s12 margin-top-20">
-                <input type="submit" value="Suchen"
-                       class="right btn btn-default pull-right" />
+                <button type="submit"  class="right btn btn-default pull-right"><i class="material-icons left">search</i>Suchen</button>
             </div>
+
+
 
             {{ form_end(form) }}
         </div>
