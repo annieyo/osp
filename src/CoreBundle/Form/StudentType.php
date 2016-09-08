@@ -19,7 +19,7 @@ class StudentType extends AbstractType
                 'name',
                 TextType::class,
                 array(
-                    'label' => 'Name',
+                    'label' => 'Vor- und Nachname',
                     'constraints' => new NotBlank(),
                 )
             )

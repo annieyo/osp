@@ -2,6 +2,7 @@
 
 namespace CoreBundle\Form;
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -18,11 +19,14 @@ class FilterType extends AbstractType
                 EntityType::class,
                 array(
                     'class' => 'CoreBundle:Advisor',
+                    'query_builder' => function(EntityRepository $repository) {
+                        return $repository->createQueryBuilder('a')->orderBy('a.name', 'ASC');
+                    },
                     'choice_label' => 'name',
                     'multiple' => false,
                     'expanded' => false,
                     'label' => false,
-                    'placeholder' => 'Berater',
+                    'placeholder' => 'Betreuer',
                     'empty_data'  => null,
                     'required' => false
                 )
@@ -32,6 +36,9 @@ class FilterType extends AbstractType
                 EntityType::class,
                 array(
                     'class' => 'CoreBundle:Topic',
+                    'query_builder' => function(EntityRepository $repository) {
+                        return $repository->createQueryBuilder('t')->orderBy('t.name', 'ASC');
+                    },
                     'choice_label' => 'name',
                     'multiple' => false,
                     'expanded' => false,
@@ -46,7 +53,7 @@ class FilterType extends AbstractType
                 TextType::class,
                 array(
                     'mapped' => false,
-                    'label' => 'Name',
+                    'label' => 'Schülername',
                     'required' => false
                 )
             );

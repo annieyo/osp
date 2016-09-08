@@ -17,6 +17,7 @@
             <tr>
                 <th>Schülername</th>
                 <th>Klasse</th>
+                <th>Gruppenname</th>
                 <th>Thema</th>
                 <th>Betreuer</th>
             </tr>
@@ -25,6 +26,7 @@
             <tr>
                 <td>{{ student.name }}</td>
                 <td>{{ student.projectGroup.projectClass.name }}</td>
+                <td>{{ student.projectGroup.name }}</td>
                 <td>{{ student.projectGroup.topic.name }}</td>
                 <td>{{ student.projectGroup.advisor.name }}</td>
             </tr>

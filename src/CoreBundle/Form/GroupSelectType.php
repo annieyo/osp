@@ -2,6 +2,7 @@
 
 namespace CoreBundle\Form;
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -19,6 +20,9 @@ class GroupSelectType extends AbstractType
                 EntityType::class,
                 array(
                     'class' => 'CoreBundle:ProjectGroup',
+                    'query_builder' => function(EntityRepository $repository) {
+                        return $repository->createQueryBuilder('g')->orderBy('g.name', 'ASC');
+                    },
                     'choice_label' => 'name',
                     'multiple' => false,
                     'expanded' => false,

@@ -20,14 +20,6 @@ class GradeController extends Controller
     /**
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction()
-    {
-        return $this->render('CoreBundle:Default:index.html.twig');
-    }
-
-    /**
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
     public function importAction(Request $request)
     {
 
@@ -169,6 +161,9 @@ class GradeController extends Controller
 
 
     /**
+     * Creates a new student, adds his grades and (depending on the 'group_existing'
+     * choice field) creates or adds a group
+     *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -176,9 +171,9 @@ class GradeController extends Controller
     {
         $session = $request->getSession();
 
+        // create student, group and group selector form
         $student = new Student();
         $form = $this->createForm(StudentType::class, $student);
-
         $group = new ProjectGroup();
         $groupForm = $this->createForm(GroupType::class, $group);
         $groupSelectForm = $this->createForm(GroupSelectType::class, $group);
@@ -199,26 +194,25 @@ class GradeController extends Controller
             $singleRating->setTotalGso($studentData['totalGso']);
             $singleRating->setTotalIhk($studentData['totalIhk']);
 
-
+            // check if user chose an existing group or wanted to create a new one
             if (!$request->request->get('student')['group_exists']) {
-                // group exists
-
-
+                // existing group
 
                 $selectedGroupId = $request->request->get('group_select')['selectedGroup'];
                 $selectedGroup = $this->getDoctrine()->getRepository('CoreBundle:ProjectGroup')->find($selectedGroupId);
 
                 $student->setProjectGroup($selectedGroup);
             } else {
-
-
+                // new group
                 $groupData = $request->request->get('group');
                 $group->setName($groupData['name']);
 
+                // get objects from ids
                 $advisor = $this->getDoctrine()->getRepository('CoreBundle:Advisor')->find($groupData['advisor']);
                 $topic = $this->getDoctrine()->getRepository('CoreBundle:Topic')->find($groupData['topic']);
                 $projectClass = $this->getDoctrine()->getRepository('CoreBundle:ProjectClass')->find($groupData['projectClass']);
 
+                // set data manually for unmapped fields
                 $group->setAdvisor($advisor);
                 $group->setTopic($topic);
                 $group->setProjectClass($projectClass);
@@ -260,6 +254,8 @@ class GradeController extends Controller
     }
 
     /**
+     * Updates student and grade data
+     *
      * @param Request $request
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
@@ -268,11 +264,13 @@ class GradeController extends Controller
     {
         $session = $request->getSession();
 
+        // get student object by id provided as url parameter
         $student = $this->getDoctrine()
             ->getManager()
             ->getRepository('CoreBundle:Student')
             ->findOneBy(array('id' => $id));
 
+        // create student, group and group selector form
         $form = $this->createForm(StudentType::class, $student);
         $groupForm = $this->createForm(GroupType::class, $student->getProjectGroup());
         $groupSelectForm = $this->createForm(GroupSelectType::class, $student->getProjectGroup());
@@ -295,6 +293,7 @@ class GradeController extends Controller
 
             $studentData = $request->request->get('student');
 
+            // delete old singleRating (because there can be only one entry with the student id)
             $em->remove($singleRating);
             $em->flush();
             $singleRating = new SingleRating();
@@ -304,9 +303,9 @@ class GradeController extends Controller
             $singleRating->setTotalGso($studentData['totalGso']);
             $singleRating->setTotalIhk($studentData['totalIhk']);
 
-
+            // check if user chose an existing group or wanted to create a new one
             if (!$request->request->get('student')['group_exists']) {
-                // group alerady exists
+                // existing group
 
                 $selectedGroupId = $request->request->get('group_select')['selectedGroup'];
                 $selectedGroup = $this->getDoctrine()->getRepository('CoreBundle:ProjectGroup')->find($selectedGroupId);
@@ -319,6 +318,7 @@ class GradeController extends Controller
                 $groupData = $request->request->get('group');
                 $group->setName($groupData['name']);
 
+                // get objects from ids
                 $advisor = $this->getDoctrine()->getRepository('CoreBundle:Advisor')->find($groupData['advisor']);
                 $topic = $this->getDoctrine()->getRepository('CoreBundle:Topic')->find($groupData['topic']);
                 $projectClass = $this->getDoctrine()->getRepository('CoreBundle:ProjectClass')->find($groupData['projectClass']);
@@ -365,6 +365,9 @@ class GradeController extends Controller
     }
 
     /**
+     * Searches for students based on advisor, topic or name and either displays a table of all results
+     * or displays the student detail page when there's only one result
+     *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
@@ -424,6 +427,8 @@ class GradeController extends Controller
     }
 
     /**
+     * Shows the detail page of a student an his grades
+     *
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -443,6 +448,8 @@ class GradeController extends Controller
     }
 
     /**
+     * deletes a student and his grades
+     *
      * @param Request $request
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse

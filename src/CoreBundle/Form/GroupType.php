@@ -2,6 +2,7 @@
 
 namespace CoreBundle\Form;
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -29,6 +30,9 @@ class GroupType extends AbstractType
                 array(
                     'class' => 'CoreBundle:Topic',
                     'placeholder' => 'Bitte wählen',
+                    'query_builder' => function(EntityRepository $repository) {
+                        return $repository->createQueryBuilder('t')->orderBy('t.name', 'ASC');
+                    },
                     'choice_label' => 'name',
                     'multiple' => false,
                     'expanded' => false,
@@ -54,11 +58,14 @@ class GroupType extends AbstractType
                 EntityType::class,
                 array(
                     'class' => 'CoreBundle:Advisor',
+                    'query_builder' => function(EntityRepository $repository) {
+                        return $repository->createQueryBuilder('a')->orderBy('a.name', 'ASC');
+                    },
                     'choice_label' => 'name',
                     'placeholder' => 'Bitte wählen',
                     'multiple' => false,
                     'expanded' => false,
-                    'label' => 'Berater',
+                    'label' => 'Betreuer',
                     'constraints' => new NotBlank(),
                 )
             )
