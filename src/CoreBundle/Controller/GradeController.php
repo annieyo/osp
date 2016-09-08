@@ -9,6 +9,7 @@ use CoreBundle\Entity\Student;
 use CoreBundle\Form\FilterType;
 use CoreBundle\Form\GroupSelectType;
 use CoreBundle\Form\GroupType;
+use CoreBundle\Form\StudentEditType;
 use CoreBundle\Form\StudentType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -271,7 +272,7 @@ class GradeController extends Controller
             ->findOneBy(array('id' => $id));
 
         // create student, group and group selector form
-        $form = $this->createForm(StudentType::class, $student);
+        $form = $this->createForm(StudentEditType::class, $student);
         $groupForm = $this->createForm(GroupType::class, new ProjectGroup());
         $groupSelectForm = $this->createForm(GroupSelectType::class, $student->getProjectGroup());
 
