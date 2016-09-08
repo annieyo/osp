@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class GroupType extends AbstractType
 {
@@ -75,7 +76,13 @@ class GroupType extends AbstractType
                 array(
                     'mapped' => false,
                     'label' => 'Produkt',
-                    'constraints' => new NotBlank(),
+                    'constraints' => array(
+                        new NotBlank(),
+                        new Regex(array(
+                            'pattern'   => '/^[1-6][+-]{0,1}$/',
+                            'match'     => true,
+                        )),
+                    )
                 )
             )
             ->add(
@@ -84,7 +91,13 @@ class GroupType extends AbstractType
                 array(
                     'mapped' => false,
                     'label' => 'Dokumentation',
-                    'constraints' => new NotBlank(),
+                    'constraints' => array(
+                        new NotBlank(),
+                        new Regex(array(
+                            'pattern'   => '/^[1-6][+-]{0,1}$/',
+                            'match'     => true,
+                        )),
+                    )
                 )
             );
     }
