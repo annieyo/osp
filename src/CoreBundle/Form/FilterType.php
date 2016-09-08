@@ -56,7 +56,7 @@ class FilterType extends AbstractType
                     'label' => 'Schülername',
                     'required' => false
                 )
-            )->setMethod('GET');
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver)

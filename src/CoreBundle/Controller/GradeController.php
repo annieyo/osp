@@ -248,6 +248,7 @@ class GradeController extends Controller
                 return $this->redirectToRoute('student_detail', array('id' => $results[0]->getId()));
             }
 
+
             if (count($results) == 0) {
                 $session->getFlashBag()->add(
                     'danger',
