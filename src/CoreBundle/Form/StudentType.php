@@ -32,7 +32,7 @@ class StudentType extends AbstractType
                     'constraints' => array(
                         new NotBlank(),
                         new Regex(array(
-                                'pattern'   => '/[1-6]{1}[+-]?/',
+                                'pattern'   => '/^[1-6][+-]{0,1}$/',
                                 'match'     => true,
                         )),
                     )
@@ -47,7 +47,7 @@ class StudentType extends AbstractType
                     'constraints' => array(
                         new NotBlank(),
                         new Regex(array(
-                            'pattern'   => '/[1-6]{1}[+-]?/',
+                            'pattern'   => '/^[1-6][+-]{0,1}$/',
                             'match'     => true,
                         )),
                     )
@@ -62,7 +62,7 @@ class StudentType extends AbstractType
                     'constraints' => array(
                         new NotBlank(),
                         new Regex(array(
-                            'pattern'   => '/[1-6]{1}[+-]?/',
+                            'pattern'   => '/^[1-6][+-]{0,1}$/',
                             'match'     => true,
                         )),
                     )
@@ -77,7 +77,7 @@ class StudentType extends AbstractType
                     'constraints' => array(
                         new NotBlank(),
                         new Regex(array(
-                            'pattern'   => '/[1-6]{1}[+-]?/',
+                            'pattern'   => '/^[1-6][+-]{0,1}$/',
                             'match'     => true,
                         )),
                     )
