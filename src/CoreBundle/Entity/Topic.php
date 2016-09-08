@@ -8,7 +8,7 @@ namespace CoreBundle\Entity;
 class Topic
 {
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -17,11 +17,23 @@ class Topic
      */
     private $name;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $projectGroup;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->projectGroup = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -50,18 +62,6 @@ class Topic
     public function getName()
     {
         return $this->name;
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $projectGroup;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->projectGroup = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -98,3 +98,4 @@ class Topic
         return $this->projectGroup;
     }
 }
+

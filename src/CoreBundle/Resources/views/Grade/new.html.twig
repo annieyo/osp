@@ -18,6 +18,10 @@
             <div id="new-student-form" class="two-col-content">
                 <div class="row">
                     <div class="col s6">
+                        <div class="col s21">
+                            <h5>Schüler</h5>
+                        </div>
+
                         {{ form_row(form.name)}}
                         {{ form_row(form.discussion) }}
                         {{ form_row(form.presentation) }}
@@ -26,6 +30,9 @@
                     </div>
                     <div class="col s6">
 
+                        <div class="col s21">
+                            <h5>Gruppe</h5>
+                        </div>
 
                         {{ form_row(form.group_exists) }}
 

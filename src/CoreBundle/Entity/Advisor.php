@@ -8,20 +8,15 @@ namespace CoreBundle\Entity;
 class Advisor
 {
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
-
     /**
-     * Get id
-     *
-     * @return int
+     * @var string
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $name;
+
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
@@ -33,6 +28,40 @@ class Advisor
     public function __construct()
     {
         $this->projectGroup = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Advisor
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**
@@ -68,33 +97,5 @@ class Advisor
     {
         return $this->projectGroup;
     }
-    /**
-     * @var string
-     */
-    private $name;
-
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Advisor
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
 }
+

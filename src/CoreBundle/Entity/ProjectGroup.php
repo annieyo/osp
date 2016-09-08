@@ -1,7 +1,6 @@
 <?php
 
 namespace CoreBundle\Entity;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * ProjectGroup
@@ -9,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 class ProjectGroup
 {
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -48,13 +47,13 @@ class ProjectGroup
      */
     public function __construct()
     {
-        $this->students = new ArrayCollection();
+        $this->students = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -92,7 +91,7 @@ class ProjectGroup
      *
      * @return ProjectGroup
      */
-    public function setGroupRating(GroupRating $groupRating = null)
+    public function setGroupRating(\CoreBundle\Entity\GroupRating $groupRating = null)
     {
         $this->groupRating = $groupRating;
 
@@ -116,7 +115,7 @@ class ProjectGroup
      *
      * @return ProjectGroup
      */
-    public function addStudent(Student $student)
+    public function addStudent(\CoreBundle\Entity\Student $student)
     {
         $this->students[] = $student;
 
@@ -128,7 +127,7 @@ class ProjectGroup
      *
      * @param \CoreBundle\Entity\Student $student
      */
-    public function removeStudent(Student $student)
+    public function removeStudent(\CoreBundle\Entity\Student $student)
     {
         $this->students->removeElement($student);
     }
@@ -150,7 +149,7 @@ class ProjectGroup
      *
      * @return ProjectGroup
      */
-    public function setProjectClass(ProjectClass $projectClass = null)
+    public function setProjectClass(\CoreBundle\Entity\ProjectClass $projectClass = null)
     {
         $this->projectClass = $projectClass;
 
@@ -174,7 +173,7 @@ class ProjectGroup
      *
      * @return ProjectGroup
      */
-    public function setAdvisor(Advisor $advisor = null)
+    public function setAdvisor(\CoreBundle\Entity\Advisor $advisor = null)
     {
         $this->advisor = $advisor;
 
@@ -198,7 +197,7 @@ class ProjectGroup
      *
      * @return ProjectGroup
      */
-    public function setTopic(Topic $topic = null)
+    public function setTopic(\CoreBundle\Entity\Topic $topic = null)
     {
         $this->topic = $topic;
 
@@ -215,3 +214,4 @@ class ProjectGroup
         return $this->topic;
     }
 }
+

@@ -8,30 +8,40 @@ namespace CoreBundle\Entity;
 class SingleRating
 {
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
     /**
-     * @var int
+     * @var string
      */
     private $discussion;
 
     /**
-     * @var int
+     * @var string
      */
     private $presentation;
 
     /**
-     * @var int
+     * @var string
      */
     private $totalIhk;
+
+    /**
+     * @var string
+     */
+    private $totalGso;
+
+    /**
+     * @var \CoreBundle\Entity\Student
+     */
+    private $student;
 
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -41,7 +51,7 @@ class SingleRating
     /**
      * Set discussion
      *
-     * @param integer $discussion
+     * @param string $discussion
      *
      * @return SingleRating
      */
@@ -55,7 +65,7 @@ class SingleRating
     /**
      * Get discussion
      *
-     * @return int
+     * @return string
      */
     public function getDiscussion()
     {
@@ -65,7 +75,7 @@ class SingleRating
     /**
      * Set presentation
      *
-     * @param integer $presentation
+     * @param string $presentation
      *
      * @return SingleRating
      */
@@ -79,7 +89,7 @@ class SingleRating
     /**
      * Get presentation
      *
-     * @return int
+     * @return string
      */
     public function getPresentation()
     {
@@ -89,7 +99,7 @@ class SingleRating
     /**
      * Set totalIhk
      *
-     * @param integer $totalIhk
+     * @param string $totalIhk
      *
      * @return SingleRating
      */
@@ -103,27 +113,17 @@ class SingleRating
     /**
      * Get totalIhk
      *
-     * @return int
+     * @return string
      */
     public function getTotalIhk()
     {
         return $this->totalIhk;
     }
-    /**
-     * @var integer
-     */
-    private $totalGso;
-
-    /**
-     * @var \CoreBundle\Entity\Student
-     */
-    private $student;
-
 
     /**
      * Set totalGso
      *
-     * @param integer $totalGso
+     * @param string $totalGso
      *
      * @return SingleRating
      */
@@ -137,7 +137,7 @@ class SingleRating
     /**
      * Get totalGso
      *
-     * @return integer
+     * @return string
      */
     public function getTotalGso()
     {
@@ -168,3 +168,4 @@ class SingleRating
         return $this->student;
     }
 }
+

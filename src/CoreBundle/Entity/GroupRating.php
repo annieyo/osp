@@ -8,25 +8,30 @@ namespace CoreBundle\Entity;
 class GroupRating
 {
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
     /**
-     * @var int
+     * @var string
      */
     private $product;
 
     /**
-     * @var int
+     * @var string
      */
     private $documentation;
+
+    /**
+     * @var \CoreBundle\Entity\ProjectGroup
+     */
+    private $projectGroup;
 
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -36,7 +41,7 @@ class GroupRating
     /**
      * Set product
      *
-     * @param integer $product
+     * @param string $product
      *
      * @return GroupRating
      */
@@ -50,7 +55,7 @@ class GroupRating
     /**
      * Get product
      *
-     * @return int
+     * @return string
      */
     public function getProduct()
     {
@@ -60,7 +65,7 @@ class GroupRating
     /**
      * Set documentation
      *
-     * @param integer $documentation
+     * @param string $documentation
      *
      * @return GroupRating
      */
@@ -74,17 +79,12 @@ class GroupRating
     /**
      * Get documentation
      *
-     * @return int
+     * @return string
      */
     public function getDocumentation()
     {
         return $this->documentation;
     }
-    /**
-     * @var \CoreBundle\Entity\ProjectGroup
-     */
-    private $projectGroup;
-
 
     /**
      * Set projectGroup
@@ -110,3 +110,4 @@ class GroupRating
         return $this->projectGroup;
     }
 }
+

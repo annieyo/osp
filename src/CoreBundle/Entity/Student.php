@@ -8,7 +8,7 @@ namespace CoreBundle\Entity;
 class Student
 {
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -16,11 +16,6 @@ class Student
      * @var string
      */
     private $name;
-
-    /**
-     * @var string
-     */
-    private $firstName;
 
     /**
      * @var \CoreBundle\Entity\SingleRating
@@ -36,7 +31,7 @@ class Student
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -65,30 +60,6 @@ class Student
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set firstName
-     *
-     * @param string $firstName
-     *
-     * @return Student
-     */
-    public function setFirstName($firstName)
-    {
-        $this->firstName = $firstName;
-
-        return $this;
-    }
-
-    /**
-     * Get firstName
-     *
-     * @return string
-     */
-    public function getFirstName()
-    {
-        return $this->firstName;
     }
 
     /**
@@ -139,3 +110,4 @@ class Student
         return $this->projectGroup;
     }
 }
+

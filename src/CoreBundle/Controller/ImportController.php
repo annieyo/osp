@@ -23,11 +23,19 @@ class ImportController extends Controller
     {
         if (sizeof($request->files)) {
 
+            $session = $request->getSession();
+
             $data = $this->importExcel($request);
 
-            $this->saveData($data);
+            if(!is_array($data)) {
+                $session->getFlashBag()->add(
+                    'danger',
+                    $data
+                );
+                return $this->render('CoreBundle:Grade:import.html.twig');
+            }
 
-            $session = $request->getSession();
+            $this->saveData($data);
 
             $session->getFlashBag()->add(
                 'success',
@@ -56,7 +64,9 @@ class ImportController extends Controller
             $objReader = \PHPExcel_IOFactory::createReader($inputFileType);
             $objPHPExcel = $objReader->load($file);
         } catch (\Exception $e) {
-            die('Error loading file "' . pathinfo($file, PATHINFO_BASENAME) . '": ' . $e->getMessage());
+            $error = 'Error loading file "' . pathinfo($file, PATHINFO_BASENAME) . '": ' . $e->getMessage();
+
+            return $error;
         }
 
         $sheetData = [];

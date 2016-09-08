@@ -1,8 +1,9 @@
 $(function() {
     var groupExists0 = $('#student_group_exists_0');
     var groupExists1 = $('#student_group_exists_1');
-    var notExisting = $('#create-group');
-    var existing = $('#change-group');
+
+    var notExisting = $('#notexisting');
+    var existing = $('#existing');
 
     if(groupExists0.is(':checked')) {
         changeDisplay(notExisting, existing);
