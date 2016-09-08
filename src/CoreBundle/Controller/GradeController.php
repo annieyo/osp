@@ -129,7 +129,7 @@ class GradeController extends Controller
             ->findOneBy(array('id' => $id));
 
         // create student, group and group selector form
-        $form = $this->createForm(StudentEditType::class, $student);
+        $form = $this->createForm(StudentType::class, $student);
         $groupForm = $this->createForm(GroupType::class, new ProjectGroup());
         $groupSelectForm = $this->createForm(GroupSelectType::class, $student->getProjectGroup());
 
