@@ -33,3 +33,7 @@ grade_delete:
 grade_edit:
     path:     /noten/bearbeiten/{id}
     defaults: { _controller: CoreBundle:Grade:edit}
+
+group_edit:
+    path:     /gruppe/bearbeiten/{id}
+    defaults: { _controller: CoreBundle:Grade:editGroup}

@@ -272,18 +272,15 @@ class GradeController extends Controller
 
         // create student, group and group selector form
         $form = $this->createForm(StudentType::class, $student);
-        $groupForm = $this->createForm(GroupType::class, $student->getProjectGroup());
+        $groupForm = $this->createForm(GroupType::class, new ProjectGroup());
         $groupSelectForm = $this->createForm(GroupSelectType::class, $student->getProjectGroup());
 
         //setting data manually for unmapped form fields
-        $projectGroup = $student->getProjectGroup();
         $singleRating = $student->getSingleRating();
         $form->get('discussion')->setData($singleRating->getDiscussion());
         $form->get('presentation')->setData($singleRating->getPresentation());
         $form->get('totalGso')->setData($singleRating->getTotalGso());
         $form->get('totalIhk')->setData($singleRating->getTotalIhk());
-        $groupForm->get('product')->setData($projectGroup->getGroupRating()->getProduct());
-        $groupForm->get('documentation')->setData($projectGroup->getGroupRating()->getDocumentation());
         $groupSelectForm->get('selectedGroup')->setData($student->getProjectGroup());
 
         $form->handleRequest($request);
@@ -475,5 +472,53 @@ class GradeController extends Controller
         }
 
         return $this->redirectToRoute('grade_search');
+    }
+
+    public function editGroupAction(Request $request, $id)
+    {
+        $session = $request->getSession();
+
+        // get student object by id provided as url parameter
+        $group = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('CoreBundle:ProjectGroup')
+            ->findOneBy(array('id' => $id));
+
+        $form = $this->createForm(GroupType::class, $group);
+
+        $form->get('product')->setData($group->getGroupRating()->getProduct());
+        $form->get('documentation')->setData($group->getGroupRating()->getDocumentation());
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $group = $form->getData();
+
+            $em->remove($group->getGroupRating());
+            $em->flush();
+
+            $groupRating = new GroupRating();
+            $groupRating->setDocumentation($request->request->get('group')['documentation']);
+            $groupRating->setProduct($request->request->get('group')['product']);
+            $groupRating->setProjectGroup($group);
+            $group->setGroupRating($groupRating);
+
+            $em->persist($group);
+            $em->flush();
+
+            $session->getFlashBag()->add(
+                'success',
+                'Die Änderungen wurden erfolgreich gespeichert!'
+            );
+
+        }
+
+        return $this->render(
+            'CoreBundle:Group:edit.html.twig',
+            array(
+                'form' => $form->createView(),
+            )
+        );
     }
 }
